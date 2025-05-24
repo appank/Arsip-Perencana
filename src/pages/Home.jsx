@@ -13,8 +13,6 @@ import { Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react
 function Home() {
   const [products, setProducts] = useState([]);
   const isMobile = useBreakpointValue({ base: true, md: false });
-
-  //navigasi cepat
  const menuItems = [
   { name: "Tentang Kami", to: "about2" },
   { name: "Layanan Kami", to: "services" },
@@ -24,30 +22,7 @@ function Home() {
   { name: "Hubungi Kami", to: "paket" },
 ];
 
-
   const toast = useToast({ position: "top", duration: 5000, isClosable: true });
-
-
-
-  // Warna-warna badge Chakra UI yang umum
-  const colorSchemes = ["teal", "blue", "green", "purple", "orange", "pink", "red", "cyan", "yellow"];
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://cv-appank-dev.vercel.app/products");
-        if (!response.ok) {
-          throw new Error("Gagal mengambil data produk");
-        }
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   return (
 
