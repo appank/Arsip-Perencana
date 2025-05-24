@@ -331,7 +331,7 @@ function Home() {
 
       <Box id="portfolio" minH="auto" display="flex" flexDirection="column" bg={"white"} alignItems="center" justifyContent="center" px={6} py={10}>
         <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
-          Real Project Yang Kami Kerjaan
+          Real Project Yang Kami Kerjakan
         </Text>
         <Box height="20px" />
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={7}>
