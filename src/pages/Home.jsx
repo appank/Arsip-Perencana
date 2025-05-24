@@ -78,6 +78,10 @@ function Home() {
         pt={{ base: 4, sm: 6, md: 10, lg: 16 }}
         pb={{ base: 4, sm: 6, md: 10, lg: 80 }}
         bg="white"
+        display="flex" // tambahkan ini
+        flexDirection="column" // tambahkan ini
+        justifyContent="center" // tambahkan ini
+        alignItems="center"
       >
         <Flex
           direction={{ base: "column", md: "column" }}
@@ -138,6 +142,7 @@ function Home() {
         pb={{ base: "auto", md: "auto" }}
       bg="white"
     >
+        <Box height="60px" />
         <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
           Ingin Bangun Rumah, Tapi Masih Ragu Mulai dari Mana?
         </Text>
@@ -261,10 +266,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="white" textAlign={"center"}>
               Harga Bersahabat
             </Text>
-            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="white" textAlign={"center"}>
               Kami Tawarkan layanan desain bangun yang ramah di kantong
             </Text>
           </Box>
@@ -279,10 +284,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="white" textAlign={"center"}>
               Gratis Revisi
             </Text>
-            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="white" textAlign={"center"}>
               Kami Tawarkan layanan desain bangun yang ramah di kantong
             </Text>
           </Box>
@@ -296,10 +301,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="white" textAlign={"center"}>
               Sesuai Impian & Budget
             </Text>
-            <Text mt={2} fontSize={{ base: "md", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="white" textAlign={"center"}>
               Desain bangunan menyesuaikan kebutuhan, keinginan, dan anggaran Anda
             </Text>
           </Box>
@@ -312,10 +317,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="white" textAlign={"center"}>
               Perencanaan dengan BIM
             </Text>
-            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="white" textAlign={"center"}>
               Kami gunakan teknologi untuk hasil desain yang lebih akurat dan efisien
             </Text>
           </Box>
@@ -398,21 +403,21 @@ function Home() {
               display="flex"
               flexDirection="column"
             >
-              <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
+              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
                 PAKET BASIC
               </Text>
-              <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
+              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
                 Rp. 20.000 /M2
               </Text>
-              <Text mt={3} mx={10} fontSize="lg" color="whiteAlpha.800" align={"center"}>
+              <Text mt={3} mx={10} fontSize="lg" color="white" align={"center"}>
                 Harga normal Rp.50.000 nikmati diskon 60%
               </Text>
-              <Text mt={5} px={5} fontSize="md" color="whiteAlpha.800" align={"left"}>
+              <Text mt={5} px={5} fontSize="md" color="white" align={"left"}>
                 <ul>
-                  <li>Visualisasi 3D Eksterior (Render)</li>
+                  <li>Visualisai 3D Eksterior (Render)</li>
                   <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak bangunan (Depan, belakang, samping kanan & samping kiri)</li>
-                  <li>Potongan (melintan & memanjang)</li>
+                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
+                  <li>Potongan (melintang & memanjang)</li>
                 </ul>
               </Text>
               {/* Tombol WhatsApp */}
@@ -453,28 +458,28 @@ function Home() {
               flexDirection="column"
             >
 
-              <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
+              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
                   PAKET PREMIUM
                 </Text>
-                <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
+              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
                   Rp. 40.000 /M2
                 </Text>
-                <Text mt={3} mx={10} fontSize="lg" color="whiteAlpha.800" align={"center"}>
+              <Text mt={3} mx={10} fontSize="lg" color="white" align={"center"}>
                   Harga normal Rp.100.000 nikmati diskon 60%
               </Text>
-              <Text mt={5} px={5} fontSize="md" color="whiteAlpha.800" align={"left"}>
+              <Text mt={5} px={5} fontSize="md" color="white" align={"left"}>
                 <ul>
-                  <li>Visualisasi 3D Eksterior (Render)</li>
+                  <li>Visualisai 3D Eksterior (Render)</li>
                     <li>3D Jelajah Bangunan (BIM)</li>
-                    <li>Denah Perencanaan Tampak bangunan (Depan, belakang, samping kanan & samping kiri)</li>
-                    <li>Potongan (melintan & memanjang)</li>
+                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
+                  <li>Potongan (melintang & memanjang)</li>
                     <li>Rencana Atap</li>
                     <li>Rencana Pola Lantai</li>
-                    <li>Rencana Platfon + Rangkai Platfond</li>
+                  <li>Rencana Plafon + Rangka Plafond</li>
                     <li>Rencana Titik Lampu</li>
                     <li>Rencana Plumbing</li>
                     <li>Rencana Peletakan Kusen</li>
-                    <li>Detail-detail (Terkait Arsitektu)</li>
+                  <li>Detail-detail (Terkait Arsitektur)</li>
                     <li>Rencana Pondasi</li>
                     <li>Rencana Kolom & Pembalokan</li>
                     <li>Gambar Detail Struktur</li>
@@ -521,29 +526,29 @@ function Home() {
               flexDirection="column"
             >
 
-              <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
+              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
                 PAKET STANDAR
               </Text>
-              <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
+              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
                 Rp. 28.000 /M2
               </Text>
-              <Text mt={3} mx={10} fontSize="lg" color="whiteAlpha.800" align={"center"}>
+              <Text mt={3} mx={10} fontSize="lg" color="white" align={"center"}>
                 Harga normal Rp.70.000 nikmati diskon 60%
               </Text>
 
-              <Text mt={5} px={5} fontSize="md" color="whiteAlpha.800" align={"left"}>
+              <Text mt={5} px={5} fontSize="md" color="white" align={"left"}>
                 <ul>
-                  <li>Visualisasi 3D Eksterior (Render)</li>
+                  <li>Visualisai 3D Eksterior (Render)</li>
                   <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak bangunan (Depan, belakang, samping kanan & samping kiri)</li>
-                  <li>Potongan (melintan & memanjang)</li>
+                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
+                  <li>Potongan (melintang & memanjang)</li>
                   <li>Rencana Atap</li>
                   <li>Rencana Pola Lantai</li>
-                  <li>Rencana Platfon + Rangkai Platfond</li>
+                  <li>Rencana Plafon + Rangka Plafond</li>
                   <li>Rencana Titik Lampu</li>
                   <li>Rencana Plumbing</li>
                   <li>Rencana Peletakan Kusen</li>
-                  <li>Detail-detail (Terkait Arsitektu)</li>
+                  <li>Detail-detail (Terkait Arsitektur)</li>
                 </ul>
               </Text>
               {/* Tombol WhatsApp */}
