@@ -1,4 +1,4 @@
-import { Link, IconButton, Wrap, WrapItem, Box, Flex, useBreakpointValue, Image, Text, Stack, Badge, HStack, Circle, VStack, SimpleGrid, Button, ButtonGroup, FormControl, FormLabel, Input, Textarea, useToast } from "@chakra-ui/react";
+import { Link,  IconButton, Wrap, WrapItem, Box, Flex, useBreakpointValue, Image, Text, Stack, Badge, HStack, Circle, VStack, SimpleGrid, Button, ButtonGroup, FormControl, FormLabel, Input, Textarea, useToast } from "@chakra-ui/react";
 import DashboardLayout from "../components/DashboardLayout";
 import { useEffect, useState } from "react";
 import profileImg from "../assets/arsib_logo.png";
@@ -6,11 +6,23 @@ import profileImg2 from "../assets/design_house.png";
 import portfolioImg1 from "../assets/portfolio1.png";
 import portfolioImg2 from "../assets/portfolio2.png";
 import portfolioImg3 from "../assets/portfolio3.png";
+import character1 from "../assets/character1.png";
+import character2 from "../assets/character2.png";
+import { Link as ScrollLink } from "react-scroll";
 import { Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
 function Home() {
   const [products, setProducts] = useState([]);
   const isMobile = useBreakpointValue({ base: true, md: false });
 
+  //navigasi cepat
+ const menuItems = [
+  { name: "Tentang Kami", to: "about2" },
+  { name: "Layanan Kami", to: "services" },
+  { name: "Alasan Memilih Kami", to: "services" },
+  { name: "Portofolio", to: "portfolio" },
+  { name: "Pilihan Paket", to: "paket" },
+  { name: "Hubungi Kami", to: "paket" },
+];
 
 
   const toast = useToast({ position: "top", duration: 5000, isClosable: true });
@@ -41,7 +53,7 @@ function Home() {
 
     <DashboardLayout>
       <a
-        href="https://wa.me/085796030907?text=Hallo,%20Saya%20ingin%20menghubungi%20Anda"
+        href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20menghubungi%20Anda."
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -91,15 +103,12 @@ function Home() {
           {/* Text Section */}
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
             <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="blue.700" mb={1}>
-              Butuh Jasa Arsitektur ?
+              Butuh Jasa Arsitek ?
             </Text>
 
             <Text fontSize={{ base: "md", md: "lg" }} color="gray.700" textAlign={{ base: "center" }}>
               Dari ide hingga gambar kerja, kami bantu Anda melangkah pasti. yuk, mulai proyekmu  bareng <span style={{ color: 'blue' }}>Arsip Perencann</span>
             </Text>
-            {/* <Text fontSize={{ base: "md", md: "lg" }} color="gray.700"  textAlign={{ base: "center" }}>
-            yuk, mulai proyekmu  bareng Arisip Perencaen
-          </Text> */}
           </Box>
         </Flex>
       </Box>
@@ -115,18 +124,111 @@ function Home() {
 
 
       >
-
         <Image
           src={profileImg2}
           boxSize={{ base: "auto", md: "auto" }}
           objectFit="cover"
-
-          alt="Baso Arfan Efendy"
-        //mb={{ base: 6, md: 0 }}
+          alt="Gambar Desain Rumah" 
         />
       </Box>
-
-
+      {/* about1 */}
+      <Box
+      id="about1"
+      minH="auto"
+      px={{ base: 4, md: 16 }}
+      pt={{ base: "50px", md: "120px" }} // sedikit dikurangi biar lebih pas
+      pb={{ base: 8, md: 16 }}
+      bg="white"
+    >
+      <Text fontSize="4xl" fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
+          Ingin Bangun Rumah, Tapi Masih Ragu Mulai dari Mana?
+        </Text>
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        align="center"
+        justify="center"
+        gap={{ base: 8, md: 16 }}
+        h="100%"
+      >
+        {/* Image Section */}
+          <Image
+            src={character1}
+            boxSize={{ base: "150px", md: "200px" }}
+            borderRadius="full"
+            objectFit="cover"
+            alt="Character"
+          //mb={{ base: 6, md: 0 }}
+          />
+          <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
+            
+            <Text mt={5} px={5} fontSize="md" color="gray.700" align={"left"}>
+                  <ul>
+                    <li>Ide banyak, tapi bingung menyatukannya jadi desain utuh?</li>
+                    <li>Ingin rumah yang nyaman dan fungsional, tapi tetap estetik?</li>
+                    <li>Sulit menemukan arsitek yang bisa diajak diskusi dengan tenang?</li>
+                    <li>Tak ingin proses desain terasa ribet dan memusingkan?</li>
+                    <li>Pusing koordinasi antar gambar teknis yang sering tidak sinkron?</li>
+                    <li>Ingin dokumen DED, RAB, dan spesifikasi teknis tersusun rapi dan lengkap?</li>
+                  </ul>
+                </Text>
+                <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+                Kalau iya, <span style={{ color: 'blue' }}>Arsip Perencann</span> siap bantu wujudkan proyek yang anda rencanakan dengan proses yang rapi, jelas, dan sesuai kebutuhan.
+              </Text>
+            </Box>
+      </Flex>
+    </Box>
+    {/* about2 */}
+      <Box
+      id="about2"
+      minH="auto"
+      // px={{ base: 4, md: 16 }}
+      // pt={{ base: "50px", md: "120px" }} // sedikit dikurangi biar lebih pas
+      // pb={{ base: 8, md: 16 }}
+      p={5}
+      bg="gray.70"
+    >
+      <Text fontSize="4xl" fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
+          Tentang Arsip Perencana
+        </Text>
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        align="center"
+        justify="center"
+        gap={{ base: 8, md: 16 }}
+        h="100%"
+      >
+       
+          <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
+            <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+                <span style={{ color: 'blue' }}>Arsip Perencann</span> adalah studio arsitektur yang berfokus pada perencanaan dan pengembangan proyek dengan pendekatan teknologi Building Information Modeling (BIM). Dengan BIM, setiap proyek yang kami kerjakan memiliki tingkat akurasi yang tinggi dalam perencanaan, visualisasi, hingga detail teknis yang dibutuhkan untuk pelaksanaan proyek. Teknologi ini memungkinkan proses desain menjadi lebih efisien, terintegrasi, dan minim kesalahan sejak tahap awal.
+              </Text>
+              <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+                Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi:
+              </Text>
+            <Text mt={5} px={5} fontSize="md" color="gray.700" align={"left"}>
+                  <ul>
+                    <li>Detail Engineering Design (DED)</li>
+                    <li>Rencana Anggaran Biaya (RAB)</li>
+                    <li>Spesifikasi Teknis</li>
+                    <li>Dokumen Teknis Lainnya sesuai kebutuhan proyek</li>
+                  </ul>
+                </Text>
+                <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+                Kalau iya, Arsip Perencana siap bantu wujudkan proyek yang anda rencanakan dengan proses yang rapi, jelas, dan sesuai kebutuhan.
+              </Text>
+            </Box>
+             {/* Image Section */}
+          <Image
+            src={character2}
+            boxSize={{ base: "150px", md: "300px" }}
+            borderRadius="full"
+            objectFit="cover"
+            alt="Character"
+          //mb={{ base: 6, md: 0 }}
+          />
+      </Flex>
+    </Box>
+   
       {/* Services Section */}
       <Box id="services" minH="auto" display="flex" flexDirection="column" alignItems="center" justifyContent="center" bg="white" px={6} py={10}>
         <Text fontSize="4xl" fontWeight="bold" color="gray.700">
@@ -227,7 +329,7 @@ function Home() {
               boxSize={{ base: "auto", md: "auto" }}
               objectFit="cover"
               borderRadius="xl"
-              alt="Baso Arfan Efendy"
+              alt="portfolioImg1"
             />
           </Box>
 
@@ -243,7 +345,7 @@ function Home() {
               boxSize={{ base: "auto", md: "auto" }}
               objectFit="cover"
               borderRadius="xl"
-              alt="Baso Arfan Efendy"
+              alt="portfolioImg2"
             />
           </Box>
           {/* Item 3 */}
@@ -258,7 +360,7 @@ function Home() {
               boxSize={{ base: "auto", md: "auto" }}
               objectFit="cover"
               borderRadius="xl"
-              alt="Baso Arfan Efendy"
+              alt="portfolioImg3"
             />
           </Box>
         </SimpleGrid>
@@ -266,7 +368,7 @@ function Home() {
 
 
       <Box
-        id="contact"
+        id="paket"
         minH="auto"
         bg="white"
         display="flex"
@@ -312,7 +414,7 @@ function Home() {
               {/* Tombol WhatsApp */}
               <Box textAlign="center" mt="auto" pt={5} >
                 <Link
-                  href="https://wa.me/6281234567890" // Ganti nomor WA kamu
+                 href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20Paket%20Basic"
                   isExternal
                   _hover={{ textDecoration: "none" }}
                   style={{
@@ -392,7 +494,7 @@ function Home() {
                 {/* Tombol WhatsApp */}
                 <Box textAlign="center" mt={6}   >
                   <Link
-                    href="https://wa.me/6281234567890" // Ganti nomor WA kamu
+                    href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20Paket%20Premium."
                     isExternal
                     _hover={{ textDecoration: "none" }}
                     style={{
@@ -458,7 +560,7 @@ function Home() {
               {/* Tombol WhatsApp */}
               <Box textAlign="center" mt="auto" pt={5} >
                 <Link
-                  href="https://wa.me/6281234567890" // Ganti nomor WA kamu
+                  href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20Paket%20Standar."
                   isExternal
                   _hover={{ textDecoration: "none" }}
                   style={{
@@ -553,21 +655,23 @@ function Home() {
             textAlign="left"
             p={5}
           >
-
             <Text fontSize="x-large" fontWeight="bold" color="black" align={"left"}>
               Navigasi Cepat
             </Text>
-            <Text mt={5} px={5} fontSize="md" color="black" align={"left"}>
-              <ul>
-                <li>Tentan Kami</li>
-                <li>Layanan Kami</li>
-                <li>Alasan Memilih Kami</li>
-                <li>Portofolio</li>
-                <li>Pilihan Paket</li>
-                <li>Hubungi Kami</li>
-
-              </ul>
-            </Text>
+            <Stack >
+        {menuItems.map((item, index) => (
+          <ScrollLink
+            key={index}
+            to={item.to}
+            smooth={true}
+            duration={500}
+            offset={-70}
+            style={{ cursor: "pointer" }}
+          >
+            {item.name}
+          </ScrollLink>
+        ))}
+      </Stack>
           </Box>
           {/* Item 3 */}
           <Box

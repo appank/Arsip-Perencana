@@ -35,7 +35,7 @@ const Topbar = () => {
         Home
       </ScrollLink>
       <ScrollLink
-        to="about"
+        to="about2"
         smooth={true}
         duration={500}
         offset={-70}
@@ -65,7 +65,7 @@ const Topbar = () => {
         Portfolio
       </ScrollLink>
       <ScrollLink
-        to="contact"
+        to="paket"
         smooth={true}
         duration={500}
         offset={-70}
