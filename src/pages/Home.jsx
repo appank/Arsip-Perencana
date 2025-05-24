@@ -660,7 +660,7 @@ function Home() {
             <Text mt={5} px={5} fontSize="md" color="black" align={"left"}>
               <ul>
                 <li>arsipperencana1345@gmail.com</li>
-                <li>085796030907</li>
+                <li>(wa)085796030907</li>
                 <li>Kota Makassar, Sulawesi Selatan</li>
 
               </ul>
