@@ -53,7 +53,8 @@ function Home() {
       {/* Home Section */}
       <Box
         id="home"
-        minH="auto"
+        // minH="100vh"
+        minH={["auto", "auto", "100vh"]}
         px={{ base: 4, md: 16 }}
         pt={{ base: "50px", md: "80px" }} // sedikit dikurangi biar lebih pas
         pb={{ base: 8, md: 16 }}
@@ -109,7 +110,7 @@ function Home() {
       {/* about1 */}
       <Box
       id="about1"
-      minH="auto"
+        minH={["auto", "auto", "100vh"]}
       px={{ base: 4, md: 16 }}
       pt={{ base: "50px", md: "120px" }} // sedikit dikurangi biar lebih pas
       pb={{ base: 8, md: 16 }}
@@ -136,7 +137,7 @@ function Home() {
           />
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
             
-            <Text mt={5} px={5} fontSize="md" color="gray.700" align={"left"}>
+            <Text mt={5} px={5} fontSize={{ base: "md", md: "lg" }} color="gray.700" align={"left"}>
                   <ul>
                     <li>Ide banyak, tapi bingung menyatukannya jadi desain utuh?</li>
                     <li>Ingin rumah yang nyaman dan fungsional, tapi tetap estetik?</li>
@@ -155,11 +156,12 @@ function Home() {
     {/* about2 */}
       <Box
       id="about2"
-      minH="auto"
-      // px={{ base: 4, md: 16 }}
-      // pt={{ base: "50px", md: "120px" }} // sedikit dikurangi biar lebih pas
-      // pb={{ base: 8, md: 16 }}
+        minH={["auto", "auto", "100vh"]}
       p={5}
+        display="flex" // tambahkan ini
+        flexDirection="column" // tambahkan ini
+        justifyContent="center" // tambahkan ini
+        alignItems="center"
       bg="gray.70"
     >
       <Text fontSize="4xl" fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
@@ -205,7 +207,7 @@ function Home() {
     </Box>
    
       {/* Services Section */}
-      <Box id="services" minH="auto" display="flex" flexDirection="column" alignItems="center" justifyContent="center" bg="white" px={6} py={10}>
+      <Box id="services" minH={["auto", "auto", "100vh"]} display="flex" flexDirection="column" alignItems="center" justifyContent="center" bg="white" px={6} py={10}>
         <Text fontSize="4xl" fontWeight="bold" color="gray.700">
           Apa yang kami tawarkan
         </Text>
@@ -414,30 +416,17 @@ function Home() {
             {/* Item 2 */}
             <Box
               textAlign="left"
+              p={6}
+              bg="blue.700"
               boxShadow="md"
-              bg={"blue.700"}
               borderRadius="xl"
               _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
               height="100%"
               display="flex"
-              flexDirection="column">
-              <Box
-                bg="gray.400"
-                borderTopRadius="xl"
-                mt="auto"
-                mb={6}
-              >
-                <Text fontSize="x-large" fontWeight="bold" color="blue.700" align={"center"}>
-                  TERLARIS
-                </Text>
-              </Box>
-              <Box
-                textAlign="left"
-                p={6}
-                borderBottomRadius={"xl"}
-                bg="blue.700"
-              >
-                <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
+              flexDirection="column"
+            >
+
+              <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
                   PAKET PREMIUM
                 </Text>
                 <Text fontSize="x-large" fontWeight="bold" color="whiteAlpha.800" align={"center"}>
@@ -445,11 +434,10 @@ function Home() {
                 </Text>
                 <Text mt={3} mx={10} fontSize="lg" color="whiteAlpha.800" align={"center"}>
                   Harga normal Rp.100.000 nikmati diskon 60%
-                </Text>
-
-                <Text mt={5} px={5} fontSize="md" color="whiteAlpha.800" align={"left"}>
-                  <ul>
-                    <li>Visualisasi 3D Eksterior (Render)</li>
+              </Text>
+              <Text mt={5} px={5} fontSize="md" color="whiteAlpha.800" align={"left"}>
+                <ul>
+                  <li>Visualisasi 3D Eksterior (Render)</li>
                     <li>3D Jelajah Bangunan (BIM)</li>
                     <li>Denah Perencanaan Tampak bangunan (Depan, belakang, samping kanan & samping kiri)</li>
                     <li>Potongan (melintan & memanjang)</li>
@@ -464,11 +452,11 @@ function Home() {
                     <li>Rencana Kolom & Pembalokan</li>
                     <li>Gambar Detail Struktur</li>
                     <li>RAB (Rencana Anggaran Biaya)</li>
-                  </ul>
-                </Text>
-                {/* Tombol WhatsApp */}
-                <Box textAlign="center" mt={6}   >
-                  <Link
+                </ul>
+              </Text>
+              {/* Tombol WhatsApp */}
+              <Box textAlign="center" mt="auto" pt={5} >
+                <Link
                     href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20Paket%20Premium."
                     isExternal
                     _hover={{ textDecoration: "none" }}
@@ -490,10 +478,9 @@ function Home() {
                     <i class="ci ci-whatsapp2" style={{ fontSize: "40px" }}></i>
                     <Text>PESAN PAKET PREMIUM</Text>
                   </Link>
-                </Box>
               </Box>
-
             </Box>
+
             {/* Item 3 */}
             <Box
               textAlign="left"
@@ -660,7 +647,7 @@ function Home() {
             <Text mt={5} px={5} fontSize="md" color="black" align={"left"}>
               <ul>
                 <li>arsipperencana1345@gmail.com</li>
-                <li>(wa)085796030907</li>
+                <li>085796030907</li>
                 <li>Kota Makassar, Sulawesi Selatan</li>
 
               </ul>
