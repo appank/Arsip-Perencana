@@ -1,4 +1,19 @@
-import { Link,  IconButton, Wrap, WrapItem, Box, Flex, useBreakpointValue, Image, Text, Stack, Badge, HStack, Circle, VStack, SimpleGrid, Button, ButtonGroup, FormControl, FormLabel, Input, Textarea, useToast } from "@chakra-ui/react";
+import {
+  Link,
+  Box,
+  Flex,
+  useBreakpointValue,
+  Text,
+  Stack,
+  SimpleGrid,
+  useToast,
+  Image,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  useDisclosure,
+} from "@chakra-ui/react";
 import DashboardLayout from "../components/DashboardLayout";
 import { useEffect, useState } from "react";
 import profileImg from "../assets/arsib_logo.png";
@@ -13,6 +28,12 @@ import { Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react
 function Home() {
   const [products, setProducts] = useState([]);
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const [selectedImg, setSelectedImg] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const handleImageClick = (imgSrc) => {
+    setSelectedImg(imgSrc);
+    onOpen();
+  };
  const menuItems = [
   { name: "Tentang Kami", to: "about2" },
   { name: "Layanan Kami", to: "services" },
@@ -53,11 +74,9 @@ function Home() {
       {/* Home Section */}
       <Box
         id="home"
-        // minH="100vh"
-        minH={["auto", "auto", "100vh"]}
-        px={{ base: 4, md: 16 }}
-        pt={{ base: "50px", md: "80px" }} // sedikit dikurangi biar lebih pas
-        pb={{ base: 8, md: 16 }}
+        minH="auto"
+        pt={{ base: 4, sm: 6, md: 10, lg: 16 }}
+        pb={{ base: 4, sm: 6, md: 10, lg: 80 }}
         bg="white"
       >
         <Flex
@@ -73,8 +92,7 @@ function Home() {
             boxSize={{ base: "150px", md: "200px" }}
             borderRadius="full"
             objectFit="cover"
-            alt="Baso Arfan Efendy"
-          //mb={{ base: 6, md: 0 }}
+            alt="profile"
           />
           {/* Text Section */}
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
@@ -82,7 +100,7 @@ function Home() {
               Butuh Jasa Arsitek ?
             </Text>
 
-            <Text fontSize={{ base: "md", md: "lg" }} color="gray.700" textAlign={{ base: "center" }}>
+            <Text fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" textAlign={{ base: "center" }}>
               Dari ide hingga gambar kerja, kami bantu Anda melangkah pasti. yuk, mulai proyekmu  bareng <span style={{ color: 'blue' }}>Arsip Perencann</span>
             </Text>
           </Box>
@@ -110,13 +128,13 @@ function Home() {
       {/* about1 */}
       <Box
       id="about1"
-        minH={["auto", "auto", "100vh"]}
+        minH={["auto", "auto", "auto"]}
       px={{ base: 4, md: 16 }}
       pt={{ base: "50px", md: "120px" }} // sedikit dikurangi biar lebih pas
       pb={{ base: 8, md: 16 }}
       bg="white"
     >
-      <Text fontSize="4xl" fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
+        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
           Ingin Bangun Rumah, Tapi Masih Ragu Mulai dari Mana?
         </Text>
       <Flex
@@ -137,7 +155,7 @@ function Home() {
           />
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
             
-            <Text mt={5} px={5} fontSize={{ base: "md", md: "lg" }} color="gray.700" align={"left"}>
+            <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
                   <ul>
                     <li>Ide banyak, tapi bingung menyatukannya jadi desain utuh?</li>
                     <li>Ingin rumah yang nyaman dan fungsional, tapi tetap estetik?</li>
@@ -147,7 +165,7 @@ function Home() {
                     <li>Ingin dokumen DED, RAB, dan spesifikasi teknis tersusun rapi dan lengkap?</li>
                   </ul>
                 </Text>
-                <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
                 Kalau iya, <span style={{ color: 'blue' }}>Arsip Perencann</span> siap bantu wujudkan proyek yang anda rencanakan dengan proses yang rapi, jelas, dan sesuai kebutuhan.
               </Text>
             </Box>
@@ -156,15 +174,18 @@ function Home() {
     {/* about2 */}
       <Box
       id="about2"
-        minH={["auto", "auto", "100vh"]}
+        minH={["auto", "auto", "auto"]}
       p={5}
         display="flex" // tambahkan ini
         flexDirection="column" // tambahkan ini
         justifyContent="center" // tambahkan ini
         alignItems="center"
       bg="gray.70"
+        pt={{ base: "auto", md: "auto" }}
+        pb={{ base: "auto", md: "auto" }}
     >
-      <Text fontSize="4xl" fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
+
+        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
           Tentang Arsip Perencana
         </Text>
       <Flex
@@ -176,13 +197,13 @@ function Home() {
       >
        
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
-            <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
                 <span style={{ color: 'blue' }}>Arsip Perencann</span> adalah studio arsitektur yang berfokus pada perencanaan dan pengembangan proyek dengan pendekatan teknologi Building Information Modeling (BIM). Dengan BIM, setiap proyek yang kami kerjakan memiliki tingkat akurasi yang tinggi dalam perencanaan, visualisasi, hingga detail teknis yang dibutuhkan untuk pelaksanaan proyek. Teknologi ini memungkinkan proses desain menjadi lebih efisien, terintegrasi, dan minim kesalahan sejak tahap awal.
               </Text>
-              <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
                 Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi:
               </Text>
-            <Text mt={5} px={5} fontSize="md" color="gray.700" align={"left"}>
+            <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
                   <ul>
                     <li>Detail Engineering Design (DED)</li>
                     <li>Rencana Anggaran Biaya (RAB)</li>
@@ -190,7 +211,7 @@ function Home() {
                     <li>Dokumen Teknis Lainnya sesuai kebutuhan proyek</li>
                   </ul>
                 </Text>
-                <Text mt={3} fontSize="lg" color="gray.700" align={"left"}>
+            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
                 Kalau iya, Arsip Perencana siap bantu wujudkan proyek yang anda rencanakan dengan proses yang rapi, jelas, dan sesuai kebutuhan.
               </Text>
             </Box>
@@ -207,14 +228,23 @@ function Home() {
     </Box>
    
       {/* Services Section */}
-      <Box id="services" minH={["auto", "auto", "100vh"]} display="flex" flexDirection="column" alignItems="center" justifyContent="center" bg="white" px={6} py={10}>
-        <Text fontSize="4xl" fontWeight="bold" color="gray.700">
+      <Box id="services"
+        minH={["auto", "auto", "auto"]}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        bg="white"
+        px={6}
+        py={2}
+      >
+        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700">
           Apa yang kami tawarkan
         </Text>
 
 
         <Box height="30px" />
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={7}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={[3, 8]}>
           {/* Item 1 */}
           <Box
             textAlign="left"
@@ -225,10 +255,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize="xl" fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Harga Bersahabat
             </Text>
-            <Text mt={2} fontSize="sm" color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
               Kami Tawarkan layanan desain bangun yang ramah di kantong
             </Text>
           </Box>
@@ -243,10 +273,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize="xl" fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Gratis Revisi
             </Text>
-            <Text mt={2} fontSize="sm" color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
               Kami Tawarkan layanan desain bangun yang ramah di kantong
             </Text>
           </Box>
@@ -260,10 +290,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize="xl" fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Sesuai Impian & Budget
             </Text>
-            <Text mt={2} fontSize="sm" color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
               Desain bangunan menyesuaikan kebutuhan, keinginan, dan anggaran Anda
             </Text>
           </Box>
@@ -276,10 +306,10 @@ function Home() {
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
           >
 
-            <Text fontSize="xl" fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
+            <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Perencanaan dengan BIM
             </Text>
-            <Text mt={2} fontSize="sm" color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
               Kami gunakan teknologi untuk hasil desain yang lebih akurat dan efisien
             </Text>
           </Box>
@@ -289,58 +319,49 @@ function Home() {
       {/* Portofolio Section */}
 
       <Box id="portfolio" minH="auto" display="flex" flexDirection="column" bg={"white"} alignItems="center" justifyContent="center" px={6} py={10}>
-        <Text fontSize="4xl" fontWeight="bold" color="gray.700">
+        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
           Real Project Yang Kami Kerjaan
         </Text>
         <Box height="20px" />
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={7}>
-          {/* Item 1 */}
-          <Box
-            boxShadow="md"
-            borderRadius="xl"
-            _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
-          >
-
-            <Image
-              src={portfolioImg1}
-              boxSize={{ base: "auto", md: "auto" }}
-              objectFit="cover"
+          {[portfolioImg1, portfolioImg2, portfolioImg3].map((img, idx) => (
+            <Box
+              key={idx}
+              boxShadow="md"
               borderRadius="xl"
-              alt="portfolioImg1"
-            />
-          </Box>
-
-          {/* Item 2 */}
-          <Box
-            boxShadow="md"
-            borderRadius="xl"
-            _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
-          >
-
-            <Image
-              src={portfolioImg2}
-              boxSize={{ base: "auto", md: "auto" }}
-              objectFit="cover"
-              borderRadius="xl"
-              alt="portfolioImg2"
-            />
-          </Box>
-          {/* Item 3 */}
-          <Box
-            boxShadow="md"
-            borderRadius="xl"
-            _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
-          >
-
-            <Image
-              src={portfolioImg3}
-              boxSize={{ base: "auto", md: "auto" }}
-              objectFit="cover"
-              borderRadius="xl"
-              alt="portfolioImg3"
-            />
-          </Box>
+              _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
+              cursor="pointer"
+              onClick={() => handleImageClick(img)}
+            >
+              <Image
+                src={img}
+                boxSize={{ base: "auto", md: "auto" }}
+                objectFit="cover"
+                borderRadius="xl"
+                alt={`portfolioImg${idx + 1}`}
+              />
+            </Box>
+          ))}
         </SimpleGrid>
+        <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
+          <ModalOverlay />
+          <ModalContent bg="transparent" boxShadow="none" maxW="fit-content">
+            <ModalBody p={0}>
+              <Image
+                src={selectedImg}
+                alt="Zoomed portfolio"
+                borderRadius="xl" 
+                maxH="80vh"
+                style={{
+                  touchAction: "manipulation",
+                  WebkitUserSelect: "auto",
+                  userSelect: "auto",
+                }}
+              />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+
       </Box>
 
 
@@ -355,7 +376,7 @@ function Home() {
 
         <Flex direction="column" p={8} align="center" justify="center" gap={8} w="full" maxW="1200px">
           {/* Teks di atas */}
-          <Text fontSize="4xl" fontWeight="bold" color="gray.700">
+          <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
             Pilih Paket Sesuai Kebutuhan Anda
           </Text>
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} >
