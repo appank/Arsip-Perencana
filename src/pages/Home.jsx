@@ -74,7 +74,7 @@ function Home() {
       {/* Home Section */}
       <Box
         id="home"
-        minH="auto"
+        minH={["auto", "auto", "100vh"]}
         pt={{ base: 4, sm: 6, md: 10, lg: 16 }}
         pb={{ base: 4, sm: 6, md: 10, lg: 80 }}
         bg="white"
@@ -100,10 +100,11 @@ function Home() {
               Butuh Jasa Arsitek ?
             </Text>
 
-            <Text fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" textAlign={{ base: "center" }}>
+            <Text fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" textAlign={{ base: "center" }}>
               Dari ide hingga gambar kerja, kami bantu Anda melangkah pasti. yuk, mulai proyekmu  bareng <span style={{ color: 'blue' }}>Arsip Perencann</span>
             </Text>
           </Box>
+          <Box maxH={10}></Box>
         </Flex>
       </Box>
       {/* About Section */}
@@ -113,7 +114,6 @@ function Home() {
         minH="auto"
         display="flex"
         //ukuran gambar
-
         justifyContent="center"
 
 
@@ -128,10 +128,14 @@ function Home() {
       {/* about1 */}
       <Box
       id="about1"
-        minH={["auto", "auto", "auto"]}
-      px={{ base: 4, md: 16 }}
-      pt={{ base: "50px", md: "120px" }} // sedikit dikurangi biar lebih pas
-      pb={{ base: 8, md: 16 }}
+        minH={["auto", "auto", "100vh"]}
+        p={5}
+        display="flex" // tambahkan ini
+        flexDirection="column" // tambahkan ini
+        justifyContent="center" // tambahkan ini
+        alignItems="center"
+        pt={{ base: "auto", md: "auto" }}
+        pb={{ base: "auto", md: "auto" }}
       bg="white"
     >
         <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign={{ base: "center", md: "center" }}>
@@ -155,7 +159,7 @@ function Home() {
           />
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
             
-            <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
+            <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                   <ul>
                     <li>Ide banyak, tapi bingung menyatukannya jadi desain utuh?</li>
                     <li>Ingin rumah yang nyaman dan fungsional, tapi tetap estetik?</li>
@@ -174,7 +178,7 @@ function Home() {
     {/* about2 */}
       <Box
       id="about2"
-        minH={["auto", "auto", "auto"]}
+        minH={["auto", "auto", "100vh"]}
       p={5}
         display="flex" // tambahkan ini
         flexDirection="column" // tambahkan ini
@@ -197,13 +201,13 @@ function Home() {
       >
        
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
-            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
+            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                 <span style={{ color: 'blue' }}>Arsip Perencann</span> adalah studio arsitektur yang berfokus pada perencanaan dan pengembangan proyek dengan pendekatan teknologi Building Information Modeling (BIM). Dengan BIM, setiap proyek yang kami kerjakan memiliki tingkat akurasi yang tinggi dalam perencanaan, visualisasi, hingga detail teknis yang dibutuhkan untuk pelaksanaan proyek. Teknologi ini memungkinkan proses desain menjadi lebih efisien, terintegrasi, dan minim kesalahan sejak tahap awal.
               </Text>
-            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
+            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                 Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi:
               </Text>
-            <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
+            <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                   <ul>
                     <li>Detail Engineering Design (DED)</li>
                     <li>Rencana Anggaran Biaya (RAB)</li>
@@ -211,7 +215,7 @@ function Home() {
                     <li>Dokumen Teknis Lainnya sesuai kebutuhan proyek</li>
                   </ul>
                 </Text>
-            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="gray.700" align={"left"}>
+            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                 Kalau iya, Arsip Perencana siap bantu wujudkan proyek yang anda rencanakan dengan proses yang rapi, jelas, dan sesuai kebutuhan.
               </Text>
             </Box>
@@ -229,14 +233,13 @@ function Home() {
    
       {/* Services Section */}
       <Box id="services"
-        minH={["auto", "auto", "auto"]}
+        minH={"auto"}
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
         bg="white"
-        px={6}
-        py={2}
+        p={5}
       >
         <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700">
           Apa yang kami tawarkan
@@ -244,7 +247,10 @@ function Home() {
 
 
         <Box height="30px" />
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={[3, 8]}>
+        <SimpleGrid columns={{ base: 1, md: 2 }}
+          spacing={6}
+          maxW="800px"     // Membatasi lebar grid
+          w="100%">
           {/* Item 1 */}
           <Box
             textAlign="left"
@@ -258,7 +264,7 @@ function Home() {
             <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Harga Bersahabat
             </Text>
-            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
               Kami Tawarkan layanan desain bangun yang ramah di kantong
             </Text>
           </Box>
@@ -276,7 +282,7 @@ function Home() {
             <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Gratis Revisi
             </Text>
-            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
               Kami Tawarkan layanan desain bangun yang ramah di kantong
             </Text>
           </Box>
@@ -293,12 +299,12 @@ function Home() {
             <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Sesuai Impian & Budget
             </Text>
-            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "md", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
               Desain bangunan menyesuaikan kebutuhan, keinginan, dan anggaran Anda
             </Text>
           </Box>
           <Box
-            textAlign="left"
+            textAlign="center"
             p={5}
             bg="blue.700"
             boxShadow="md"
@@ -309,7 +315,7 @@ function Home() {
             <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight="bold" color="whiteAlpha.800" textAlign={"center"}>
               Perencanaan dengan BIM
             </Text>
-            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }} color="whiteAlpha.800" textAlign={"center"}>
+            <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="whiteAlpha.800" textAlign={"center"}>
               Kami gunakan teknologi untuk hasil desain yang lebih akurat dan efisien
             </Text>
           </Box>
@@ -335,7 +341,7 @@ function Home() {
             >
               <Image
                 src={img}
-                boxSize={{ base: "auto", md: "auto" }}
+                boxSize={{ base: "auto", md: "300px" }}
                 objectFit="cover"
                 borderRadius="xl"
                 alt={`portfolioImg${idx + 1}`}
