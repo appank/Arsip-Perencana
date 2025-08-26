@@ -14,6 +14,7 @@ import {
   ModalBody,
   useDisclosure,
 } from "@chakra-ui/react";
+import { FaWhatsapp } from "react-icons/fa";
 import DashboardLayout from "../components/DashboardLayout";
 import { useEffect, useState } from "react";
 import profileImg from "../assets/arsib_logo.png";
@@ -73,7 +74,7 @@ function Home() {
           color: "inherit",
         }}
       >
-        <i className="ci ci-whatsapp ci-2x"></i>
+        <FaWhatsapp size={32} color="#25D366" />
       </a>
       {/* Home Section */}
       <Box
@@ -442,7 +443,7 @@ function Home() {
                     userSelect: "none",
                   }}
                   aria-label="Pesan Paket Premium via WhatsApp" >
-                  <i class="ci ci-whatsapp2" style={{ fontSize: "40px" }}></i>
+                  <FaWhatsapp size={32} color="#25D366" />
                   <Text>PESAN PAKET BASIC</Text>
                 </Link>
               </Box>
@@ -509,7 +510,7 @@ function Home() {
                     }}
                     aria-label="Pesan Paket Premium via WhatsApp"
                   >
-                    <i class="ci ci-whatsapp2" style={{ fontSize: "40px" }}></i>
+                  <FaWhatsapp size={32} color="#25D366" />
                     <Text>PESAN PAKET PREMIUM</Text>
                   </Link>
               </Box>
@@ -574,7 +575,7 @@ function Home() {
                   }}
                   aria-label="Pesan Paket Premium via WhatsApp"
                 >
-                  <i class="ci ci-whatsapp2" style={{ fontSize: "40px" }}></i>
+                  <FaWhatsapp size={32} color="#25D366" />
                   <Text>PESAN PAKET STANDAR</Text>
                 </Link>
               </Box>
