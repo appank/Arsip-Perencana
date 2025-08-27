@@ -212,7 +212,7 @@ function Home() {
        
           <Box textAlign={{ base: "center", md: "center" }} maxW="600px">
             <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
-              <span style={{ color: 'blue' }}>Arsip Perencana</span> adalah studio arsitektur yang berfokus pada perencanaan dan pengembangan proyek dengan pendekatan teknologi Building Information Modeling (BIM). Dengan BIM, setiap proyek yang kami kerjakan memiliki tingkat akurasi yang tinggi dalam perencanaan, visualisasi, hingga detail teknis yang dibutuhkan untuk pelaksanaan proyek. Teknologi ini memungkinkan proses desain menjadi lebih efisien, terintegrasi, dan minim kesalahan sejak tahap awal.
+              <span style={{ color: 'blue' }}>Arsip Perencana</span> adalah studio arsitektur yang berfokus pada perencana-an dan pengembangan proyek dengan pendekatan teknologi Building Information Modeling (BIM). Dengan BIM, setiap proyek yang kami kerjakan memiliki tingkat akurasi yang tinggi dalam perencanaan, visualisasi, hingga detail teknis yang dibutuhkan untuk pelaksanaan proyek. Teknologi ini memungkinkan proses desain menjadi lebih efisien, terintegrasi, dan minim kesalahan sejak tahap awal.
               </Text>
             <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                 Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi:
@@ -273,7 +273,7 @@ function Home() {
               Harga Bersahabat
             </Text>
             <Text mt={2} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="white" textAlign={"center"}>
-              Kami Tawarkan layanan desain bangun yang ramah di kantong
+              Kami Tawarkan layanan desain bangunan yang ramah di kantong
             </Text>
           </Box>
 
@@ -419,7 +419,7 @@ function Home() {
                 <ul>
                   <li>Visualisai 3D Eksterior (Render)</li>
                   <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
+                  <li>Denah Perencana-an Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
                   <li>Potongan (melintang & memanjang)</li>
                 </ul>
               </Text>
@@ -474,7 +474,7 @@ function Home() {
                 <ul>
                   <li>Visualisai 3D Eksterior (Render)</li>
                     <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
+                  <li>Denah Perencana-an Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
                   <li>Potongan (melintang & memanjang)</li>
                     <li>Rencana Atap</li>
                     <li>Rencana Pola Lantai</li>
@@ -543,7 +543,7 @@ function Home() {
                 <ul>
                   <li>Visualisai 3D Eksterior (Render)</li>
                   <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
+                  <li>Denah Perencana-an Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
                   <li>Potongan (melintang & memanjang)</li>
                   <li>Rencana Atap</li>
                   <li>Rencana Pola Lantai</li>
