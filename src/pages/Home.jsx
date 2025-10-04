@@ -13,6 +13,7 @@ import {
   ModalContent,
   ModalBody,
   useDisclosure,
+  Button,
 } from "@chakra-ui/react";
 import { FaWhatsapp } from "react-icons/fa";
 import DashboardLayout from "../components/DashboardLayout";
@@ -35,6 +36,8 @@ function Home() {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const [selectedImg, setSelectedImg] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [activeTab, setActiveTab] = useState("desain-bangunan");
+
   const handleImageClick = (imgSrc) => {
     setSelectedImg(imgSrc);
     onOpen();
@@ -330,8 +333,197 @@ function Home() {
 
         </SimpleGrid>
       </Box>
-      {/* Portofolio Section */}
 
+      {/* Tab Section - Members, Projects, Settings */}
+      <Box minH="auto" bg="gray.50" px={6} py={10}>
+        <Box maxW="1200px" mx="auto">
+          {/* Tab Buttons */}
+          <Flex
+            borderBottom="2px solid"
+            borderColor="gray.200"
+            mb={6}
+            gap={0}
+            justifyContent="center"
+          >
+            <Box
+              px={6}
+              py={3}
+              cursor="pointer"
+              borderBottom={activeTab === "desain-bangunan" ? "3px solid" : "none"}
+              borderColor="blue.700"
+              bg={activeTab === "desain-bangunan" ? "white" : "transparent"}
+              fontWeight={activeTab === "desain-bangunan" ? "bold" : "normal"}
+              color={activeTab === "desain-bangunan" ? "black" : "gray.600"}
+              onClick={() => setActiveTab("desain-bangunan")}
+              _hover={{ bg: "white" }}
+              display="flex"
+              alignItems="center"
+              gap={2}
+            >
+              <Text fontSize={{ base: "sm", md: "md" }}>Desain Bangunan</Text>
+            </Box>
+            <Box
+              px={6}
+              py={3}
+              cursor="pointer"
+              borderBottom={activeTab === "desain-interior" ? "3px solid" : "none"}
+              borderColor="blue.700"
+              bg={activeTab === "desain-interior" ? "white" : "transparent"}
+              fontWeight={activeTab === "desain-interior" ? "bold" : "normal"}
+              color={activeTab === "desain-interior" ? "black" : "gray.600"}
+              onClick={() => setActiveTab("desain-interior")}
+              _hover={{ bg: "white" }}
+              display="flex"
+              alignItems="center"
+              gap={2}
+            >
+              <Text fontSize={{ base: "sm", md: "md" }}>Desain Interior</Text>
+            </Box>
+          </Flex>
+
+          {/* Tab Title */}
+          <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color="gray.800" mb={6}>
+            {activeTab === "desain-bangunan" && "Koleksi Desain Bangunan"}
+            {activeTab === "desain-interior" && "Koleksi Desain Interior"}
+          </Text>
+
+          {/* Tab Content - Desain Bangunan */}
+          {activeTab === "desain-bangunan" && (
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+              {[
+                { name: "Paket 1", role: "Desain Bangunan Basic", icon: "🏠", color: "#667eea" },
+                { name: "Paket 2", role: "Desain Bangunan Standard", icon: "🏡", color: "#f093fb" },
+                { name: "Paket 3", role: "Desain Bangunan Premium", icon: "🏘️", color: "#764ba2" },
+              ].map((member, idx) => (
+                <Box
+                  key={idx}
+                  bg="white"
+                  borderRadius="2xl"
+                  boxShadow="lg"
+                  overflow="hidden"
+                  _hover={{ transform: "translateY(-4px)", boxShadow: "xl", transition: "0.3s" }}
+                  transition="0.3s"
+                >
+                  {/* Image Placeholder */}
+                  <Box
+                    bg={`linear-gradient(135deg, ${member.color} 0%, #667eea 100%)`}
+                    h="200px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    position="relative"
+                  >
+                    <Text fontSize="6xl">{member.icon}</Text>
+                  </Box>
+
+                  {/* Content */}
+                  <Box p={6}>
+                    <Text
+                      fontSize="xl"
+                      fontWeight="bold"
+                      color="blue.600"
+                      textAlign="center"
+                      mb={2}
+                    >
+                      {member.name}
+                    </Text>
+                    <Text
+                      fontSize="sm"
+                      color="gray.600"
+                      textAlign="center"
+                      mb={4}
+                    >
+                      {member.role}
+                    </Text>
+
+                    {/* Buttons */}
+                    <Stack spacing={3}>
+                      <Button
+                        colorScheme="blue"
+                        size="md"
+                        leftIcon={<Text>📦</Text>}
+                        w="100%"
+                      >
+                        Produk
+                      </Button>
+                    </Stack>
+                  </Box>
+                </Box>
+              ))}
+            </SimpleGrid>
+          )}
+
+          {/* Tab Content - Desain Interior */}
+          {activeTab === "desain-interior" && (
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+              {[
+                { title: "Paket 1", client: "Desain Interior Basic", color: "#f093fb", icon: "🛋️" },
+                { title: "Paket 2", client: "Desain Interior Standard", color: "#667eea", icon: "🪑" },
+                { title: "Paket 3", client: "Desain Interior Premium", color: "#764ba2", icon: "🏠" },
+              ].map((project, idx) => (
+                <Box
+                  key={idx}
+                  bg="white"
+                  borderRadius="2xl"
+                  boxShadow="lg"
+                  overflow="hidden"
+                  _hover={{ transform: "translateY(-4px)", boxShadow: "xl", transition: "0.3s" }}
+                  transition="0.3s"
+                >
+                  {/* Image Placeholder with Interior Icon */}
+                  <Box
+                    bg={`linear-gradient(135deg, ${project.color} 0%, #667eea 100%)`}
+                    h="200px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    position="relative"
+                  >
+                    <Text fontSize="6xl">{project.icon}</Text>
+                  </Box>
+
+                  {/* Content */}
+                  <Box p={6}>
+                    <Text
+                      fontSize="xl"
+                      fontWeight="bold"
+                      color="blue.600"
+                      textAlign="center"
+                      mb={2}
+                      noOfLines={2}
+                      minH="60px"
+                    >
+                      {project.title}
+                    </Text>
+                    <Text
+                      fontSize="sm"
+                      color="gray.600"
+                      textAlign="center"
+                      mb={4}
+                    >
+                      {project.client}
+                    </Text>
+
+                    {/* Buttons */}
+                    <Stack spacing={3}>
+                      <Button
+                        colorScheme="blue"
+                        size="md"
+                        leftIcon={<Text>📦</Text>}
+                        w="100%"
+                      >
+                        Produk
+                      </Button>
+                    </Stack>
+                  </Box>
+                </Box>
+              ))}
+            </SimpleGrid>
+          )}
+        </Box>
+      </Box>
+
+      {/* Portofolio Section */}
       <Box id="portfolio" minH="auto" display="flex" flexDirection="column" bg={"white"} alignItems="center" justifyContent="center" px={6} py={10}>
         <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
           Real Project Yang Kami Kerjakan

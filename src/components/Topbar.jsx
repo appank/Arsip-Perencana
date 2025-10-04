@@ -17,6 +17,7 @@ import {
 import { FiAlignLeft } from "react-icons/fi";
 import profileImg from "../assets/arsib_logo.png";
 import { Link as ScrollLink } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 
 const Topbar = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -74,6 +75,15 @@ const Topbar = () => {
       >
         Paket
       </ScrollLink>
+      <Button
+        as={RouterLink}
+        to="/dashboard-admin"
+        colorScheme="teal"
+        size="sm"
+        onClick={onClose}
+      >
+        Dashboard Admin
+      </Button>
     </Stack>
   );
 
