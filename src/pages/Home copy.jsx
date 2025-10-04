@@ -441,8 +441,8 @@ function Home() {
                     cursor: "pointer",
                     userSelect: "none",
                   }}
-                  aria-label="Pesan Paket Premium via WhatsApp" >
-                  <i class="ci ci-whatsapp2" style={{ fontSize: "40px" }}></i>
+                  aria-label="Pesan Paket Basic via WhatsApp" >
+                  <FaWhatsapp size={32} color="#25D366" />
                   <Text>PESAN PAKET BASIC</Text>
                 </Link>
               </Box>
@@ -509,7 +509,7 @@ function Home() {
                     }}
                     aria-label="Pesan Paket Premium via WhatsApp"
                   >
-                    <i class="ci ci-whatsapp2" style={{ fontSize: "40px" }}></i>
+                  <FaWhatsapp size={32} color="#25D366" />
                     <Text>PESAN PAKET PREMIUM</Text>
                   </Link>
               </Box>
@@ -572,9 +572,9 @@ function Home() {
                     cursor: "pointer",
                     userSelect: "none",
                   }}
-                  aria-label="Pesan Paket Premium via WhatsApp"
+                  aria-label="Pesan Paket Standar via WhatsApp"
                 >
-                  <i class="ci ci-whatsapp2" style={{ fontSize: "40px" }}></i>
+                  <FaWhatsapp size={32} color="#25D366" />
                   <Text>PESAN PAKET STANDAR</Text>
                 </Link>
               </Box>

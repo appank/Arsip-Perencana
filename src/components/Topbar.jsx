@@ -75,7 +75,7 @@ const Topbar = () => {
       >
         Paket
       </ScrollLink>
-      <Button
+      {/* <Button
         as={RouterLink}
         to="/dashboard-admin"
         colorScheme="teal"
@@ -83,7 +83,7 @@ const Topbar = () => {
         onClick={onClose}
       >
         Dashboard Admin
-      </Button>
+      </Button> */}
     </Stack>
   );
 
