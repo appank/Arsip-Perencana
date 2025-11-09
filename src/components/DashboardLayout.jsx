@@ -1,5 +1,5 @@
 
-import { Stack, Badge, Box, Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import Topbar from "./Topbar";
 
 const DashboardLayout = ({ children }) => {

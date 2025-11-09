@@ -858,7 +858,7 @@ function Home() {
               <ul>
                 <li>arsipperencana1345@gmail.com</li>
                 <li>085796030907</li>
-                <li>Kota Makassar, Sulawesi Selatan</li>
+                <li>Kota Makassar, Sulawesi Selatans.</li>
 
               </ul>
             </Text>

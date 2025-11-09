@@ -2,11 +2,9 @@ import {
   Link,
   Box,
   Flex,
-  useBreakpointValue,
   Text,
   Stack,
   SimpleGrid,
-  useToast,
   Image,
   Modal,
   ModalOverlay,
@@ -18,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { FaWhatsapp } from "react-icons/fa";
 import DashboardLayout from "../components/DashboardLayout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import profileImg from "../assets/arsib_logo.png";
 import profileImg2 from "../assets/design_house.png";
 import portfolioImg1 from "../assets/portfolio1.jpeg";
@@ -28,13 +26,12 @@ import portfolioImg4 from "../assets/portfolio4.jpeg";
 import portfolioImg5 from "../assets/portfolio5.jpeg";
 import portfolioImg6 from "../assets/portfolio6.jpeg";
 import character1 from "../assets/character1.png";
-import character2 from "../assets/character2.png";
 import character3 from "../assets/character3.png";
 import { Link as ScrollLink } from "react-scroll";
 import { Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
 function Home() {
-  const [products, setProducts] = useState([]);
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  // const [products, setProducts] = useState([]);
+  // const isMobile = useBreakpointValue({ base: true, md: false });
   const [selectedImg, setSelectedImg] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [activeTab, setActiveTab] = useState("desain-bangunan");
@@ -73,7 +70,7 @@ function Home() {
   { name: "Hubungi Kami", to: "paket" },
 ];
 
-  const toast = useToast({ position: "top", duration: 5000, isClosable: true });
+  // const toast = useToast({ position: "top", duration: 5000, isClosable: true });
 
   return (
 

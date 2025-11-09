@@ -25,7 +25,7 @@ const DashboardAdmin = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Data dummy untuk tabel
-  const [items, setItems] = useState([
+  const [items] = useState([
     { id: 1, namaBarang: "Laptop Dell XPS 13", url: "/detail/1" },
     { id: 2, namaBarang: "Mouse Logitech MX Master", url: "/detail/2" },
     { id: 3, namaBarang: "Keyboard Mechanical RGB", url: "/detail/3" },
@@ -140,4 +140,3 @@ const DashboardAdmin = () => {
 };
 
 export default DashboardAdmin;
-

@@ -1,9 +1,7 @@
 import {
   Flex,
-  Button,
   Image,
   IconButton,
-  Text,
   Stack,
   useBreakpointValue,
   useDisclosure,
@@ -17,7 +15,7 @@ import {
 import { FiAlignLeft } from "react-icons/fi";
 import profileImg from "../assets/arsib_logo.png";
 import { Link as ScrollLink } from "react-scroll";
-import { Link as RouterLink } from "react-router-dom";
+// import { Link as RouterLink } from "react-router-dom";
 
 const Topbar = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
