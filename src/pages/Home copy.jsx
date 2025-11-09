@@ -12,8 +12,11 @@ import {
   ModalOverlay,
   ModalContent,
   ModalBody,
+  ModalCloseButton,
   useDisclosure,
+  Button,
 } from "@chakra-ui/react";
+import { FaWhatsapp } from "react-icons/fa";
 import DashboardLayout from "../components/DashboardLayout";
 import { useEffect, useState } from "react";
 import profileImg from "../assets/arsib_logo.png";
@@ -34,6 +37,29 @@ function Home() {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const [selectedImg, setSelectedImg] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [activeTab, setActiveTab] = useState("desain-bangunan");
+
+  // Kumpulan gambar portofolio per tab
+  const portfolioImagesMap = {
+    "desain-bangunan": [
+      portfolioImg1,
+      portfolioImg2,
+      portfolioImg3,
+      portfolioImg4,
+      portfolioImg5,
+      portfolioImg6,
+    ],
+    // Belum ada aset interior terpisah; sementara gunakan gambar yang sama
+    "desain-interior": [
+      portfolioImg1,
+      portfolioImg2,
+      portfolioImg3,
+      portfolioImg4,
+      portfolioImg5,
+      portfolioImg6,
+    ],
+  };
+
   const handleImageClick = (imgSrc) => {
     setSelectedImg(imgSrc);
     onOpen();
@@ -73,7 +99,7 @@ function Home() {
           color: "inherit",
         }}
       >
-        <i className="ci ci-whatsapp ci-2x"></i>
+        <FaWhatsapp size={32} color="#25D366" />
       </a>
       {/* Home Section */}
       <Box
@@ -214,19 +240,16 @@ function Home() {
               <span style={{ color: 'blue' }}>Arsip Perencana</span> adalah studio arsitektur yang berfokus pada perencanaan dan pengembangan proyek dengan pendekatan teknologi Building Information Modeling (BIM). Dengan BIM, setiap proyek yang kami kerjakan memiliki tingkat akurasi yang tinggi dalam perencanaan, visualisasi, hingga detail teknis yang dibutuhkan untuk pelaksanaan proyek. Teknologi ini memungkinkan proses desain menjadi lebih efisien, terintegrasi, dan minim kesalahan sejak tahap awal.
               </Text>
             <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
-                Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi:
+              Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi: 
               </Text>
             <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                   <ul>
                     <li>Detail Engineering Design (DED)</li>
                     <li>Rencana Anggaran Biaya (RAB)</li>
-                    <li>Spesifikasi Teknis</li>
-                    <li>Dokumen Teknis Lainnya sesuai kebutuhan proyek</li>
-                  </ul>
+                <li>Spesifikasi Teknis</li>
+              </ul>
                 </Text>
-            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
-                Kalau iya, Arsip Perencana siap bantu wujudkan proyek yang anda rencanakan dengan proses yang rapi, jelas, dan sesuai kebutuhan.
-              </Text>
+
             </Box>
              {/* Image Section */}
           <Image
@@ -245,7 +268,10 @@ function Home() {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        bg="white"
+        // bg="white"
+        bg="gray.70"
+        pt={{ base: "auto", md: "auto" }}
+        pb={{ base: "auto", md: "auto" }}
         p={5}
       >
         <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700">
@@ -262,7 +288,7 @@ function Home() {
           <Box
             textAlign="left"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -280,7 +306,7 @@ function Home() {
           <Box
             textAlign="left"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -297,7 +323,7 @@ function Home() {
           <Box
             textAlign="left"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -313,7 +339,7 @@ function Home() {
           <Box
             textAlign="center"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -328,16 +354,73 @@ function Home() {
           </Box>
 
         </SimpleGrid>
+        <Box height="40px" />
       </Box>
       {/* Portofolio Section */}
 
       <Box id="portfolio" minH="auto" display="flex" flexDirection="column" bg={"white"} alignItems="center" justifyContent="center" px={6} py={10}>
-        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
-          Real Project Yang Kami Kerjakan
-        </Text>
+        {/* Tab Buttons dipindah ke bawah judul Portfolio */}
         <Box height="20px" />
+        <Flex
+          mb={8}
+          gap={{ base: 4, md: 6 }}
+          justifyContent="center"
+          w="full"
+          maxW="800px"
+        >
+
+          <Button
+            onClick={() => setActiveTab("desain-bangunan")}
+            borderRadius="18px"
+            size="lg"
+            px={{ base: 8, md: 10, lg: 12, xl: 14 }}
+            py={{ base: 5, md: 6, lg: 7 }}
+            shadow={"md"}
+            fontSize={{ base: "md", md: "lg", lg: "2xl" }}
+            // fontSize={{ base: "xl", lg: "2xl" }}
+            borderLeftWidth="4px"
+            borderRightWidth="4px"
+            borderTopWidth="4px"
+            borderBottomWidth="4px"
+            borderColor={activeTab === "desain-bangunan" ? "gray.700" : "gray.700"}
+            bg={activeTab === "desain-bangunan" ? "#1B4965" : "gray.100"}
+            color={activeTab === "desain-bangunan" ? "white" : "gray.800"}
+            _hover={{ bg: activeTab === "desain-bangunan" ? "#235B7E" : "gray.200", borderColor: activeTab === "desain-bangunan" ? "blue.800" : "gray.400" }}
+            fontWeight={activeTab === "desain-bangunan" ? "bold" : "semibold"}
+          >
+            Desain Bangunan
+          </Button>
+          <Button
+            onClick={() => setActiveTab("desain-interior")}
+            borderRadius="18px"
+            size="lg"
+            px={{ base: 8, md: 10, lg: 12, xl: 14 }}
+            py={{ base: 5, md: 6, lg: 7 }}
+            shadow={"md"}
+            fontSize={{ base: "md", md: "lg", lg: "2xl" }}
+            // fontSize={{ base: "xl", lg: "2xl" }}
+            borderLeftWidth="4px"
+            borderRightWidth="4px"
+            borderTopWidth="4px"
+            borderBottomWidth="4px"
+            borderColor={activeTab === "desain-interior" ? "gray.700" : "gray.700"}
+            bg={activeTab === "desain-interior" ? "#1B4965" : "gray.200"}
+            color={activeTab === "desain-interior" ? "white" : "gray.800"}
+            _hover={{ bg: activeTab === "desain-interior" ? "#235B7E" : "gray.300", borderColor: activeTab === "desain-interior" ? "#235B7E" : "gray.500" }}
+            fontWeight={activeTab === "desain-interior" ? "bold" : "semibold"}
+          >
+            Desain Interior
+          </Button>
+        </Flex>
+
+
+        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
+          {` Real Project Desain ${activeTab === 'desain-bangunan' ? 'Bangunan' : 'Interior'} Yang Kami Kerjakan`}
+        </Text>
+        <Box height="12px" />
+
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={7}>
-          {[portfolioImg1, portfolioImg2, portfolioImg3, portfolioImg4, portfolioImg5, portfolioImg6].map((img, idx) => (
+          {(portfolioImagesMap[activeTab] || []).map((img, idx) => (
             <Box
               key={idx}
               boxShadow="md"
@@ -358,12 +441,19 @@ function Home() {
         </SimpleGrid>
         <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
           <ModalOverlay />
-          <ModalContent bg="transparent" boxShadow="none" maxW="fit-content">
+          <ModalContent bg="transparent" boxShadow="none" maxW="fit-content" position="relative">
+            <ModalCloseButton
+              color="white"
+              bg="blackAlpha.600"
+              _hover={{ bg: "blackAlpha.700" }}
+              borderRadius="full"
+              onClick={onClose}
+            />
             <ModalBody p={0}>
               <Image
                 src={selectedImg}
                 alt="Zoomed portfolio"
-                borderRadius="xl" 
+                borderRadius="xl"
                 maxH="80vh"
                 style={{
                   touchAction: "manipulation",
@@ -390,196 +480,282 @@ function Home() {
         <Flex direction="column" p={8} align="center" justify="center" gap={8} w="full" maxW="1200px">
           {/* Teks di atas */}
           <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
-            Pilih Paket Sesuai Kebutuhan Anda
+            {`Pilih Paket Desain ${activeTab === 'desain-bangunan' ? 'Bangunan' : 'Interior'} Sesuai Kebutuhan Anda:`}
           </Text>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} >
-            {/* Item 1 */}
-            <Box
-              textAlign="left"
-              p={6}
-              bg="blue.700"
-              boxShadow="md"
-              borderRadius="xl"
-              _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
-              height="100%"
-              display="flex"
-              flexDirection="column"
+          {/* Tab Section - Desain Bangunan & Desain Interior */}
+          <Box width="100%" >
+            {/* Tab Buttons */}
+            <Flex
+              display="none"
+              borderBottom="2px solid"
+              borderColor="gray.200"
+              mb={6}
+              gap={0}
+              justifyContent="center"
             >
-              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
-                PAKET BASIC
-              </Text>
-              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
-                Rp. 25.000 /M2
-              </Text>
-              <Text mt={3} mx={10} fontSize="lg" color="white" align={"center"}>
-                Harga normal Rp.50.000 nikmati diskon 50%
-              </Text>
-              <Text mt={5} px={5} fontSize="md" color="white" align={"left"}>
-                <ul>
-                  <li>Visualisai 3D Eksterior (Render)</li>
-                  <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
-                  <li>Potongan (melintang & memanjang)</li>
-                </ul>
-              </Text>
-              {/* Tombol WhatsApp */}
-              <Box textAlign="center" mt="auto" pt={5} >
-                <Link
-                 href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20Paket%20Basic"
-                  isExternal
-                  _hover={{ textDecoration: "none" }}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px",
-                    borderRadius: "12px", // bulat banget
-                    backgroundColor: "white",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
-                    cursor: "pointer",
-                    userSelect: "none",
-                  }}
-                  aria-label="Pesan Paket Basic via WhatsApp" >
-                  <FaWhatsapp size={32} color="#25D366" />
-                  <Text>PESAN PAKET BASIC</Text>
-                </Link>
+              <Box
+                px={6}
+                py={3}
+                cursor="pointer"
+                borderBottom={activeTab === "desain-bangunan" ? "3px solid" : "none"}
+                borderColor="blue.700"
+                bg={activeTab === "desain-bangunan" ? "white" : "transparent"}
+                fontWeight={activeTab === "desain-bangunan" ? "bold" : "normal"}
+                color={activeTab === "desain-bangunan" ? "black" : "gray.600"}
+                onClick={() => setActiveTab("desain-bangunan")}
+                _hover={{ bg: "white" }}
+                display="flex"
+                alignItems="center"
+                gap={2}
+              >
+                <Text fontSize={{ base: "sm", md: "md" }}>🏠 Desain Bangunan</Text>
               </Box>
-            </Box>
-            {/* Item 2 */}
-            <Box
-              textAlign="left"
-              p={6}
-              bg="blue.700"
-              boxShadow="md"
-              borderRadius="xl"
-              _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
-              height="100%"
-              display="flex"
-              flexDirection="column"
-            >
+              <Box
+                px={6}
+                py={3}
+                cursor="pointer"
+                borderBottom={activeTab === "desain-interior" ? "3px solid" : "none"}
+                borderColor="blue.700"
+                bg={activeTab === "desain-interior" ? "white" : "transparent"}
+                fontWeight={activeTab === "desain-interior" ? "bold" : "normal"}
+                color={activeTab === "desain-interior" ? "black" : "gray.600"}
+                onClick={() => setActiveTab("desain-interior")}
+                _hover={{ bg: "white" }}
+                display="flex"
+                alignItems="center"
+                gap={2}
+              >
+                <Text fontSize={{ base: "sm", md: "md" }}>🛋️ Desain Interior</Text>
+              </Box>
+            </Flex>
 
-              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
-                  PAKET PREMIUM
-                </Text>
-              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
-                Rp. 50.000 /M2
-                </Text>
-              <Text mt={3} mx={10} fontSize="lg" color="white" align={"center"}>
-                Harga normal Rp.100.000 nikmati diskon 50%
-              </Text>
-              <Text mt={5} px={5} fontSize="md" color="white" align={"left"}>
-                <ul>
-                  <li>Visualisai 3D Eksterior (Render)</li>
-                    <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
-                  <li>Potongan (melintang & memanjang)</li>
-                    <li>Rencana Atap</li>
-                    <li>Rencana Pola Lantai</li>
-                  <li>Rencana Plafon + Rangka Plafond</li>
-                    <li>Rencana Titik Lampu</li>
-                    <li>Rencana Plumbing</li>
-                    <li>Rencana Peletakan Kusen</li>
-                  <li>Detail-detail (Terkait Arsitektur)</li>
-                    <li>Rencana Pondasi</li>
-                    <li>Rencana Kolom & Pembalokan</li>
-                    <li>Gambar Detail Struktur</li>
-                    <li>RAB (Rencana Anggaran Biaya)</li>
-                </ul>
-              </Text>
-              {/* Tombol WhatsApp */}
-              <Box textAlign="center" mt="auto" pt={5} >
-                <Link
-                    href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20Paket%20Premium."
-                    isExternal
-                    _hover={{ textDecoration: "none" }}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      padding: "10px",
-                      borderRadius: "12px", // bulat banget
-                      backgroundColor: "white",
-                      fontWeight: "bold",
-                      fontSize: "16px",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
-                      cursor: "pointer",
-                      userSelect: "none",
-                    }}
-                    aria-label="Pesan Paket Premium via WhatsApp"
+
+            {/* Tab Content - Desain Bangunan */}
+            {activeTab === "desain-bangunan" && (
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
+                {[
+                  {
+                    name: "PAKET BASIC", price: "Rp. 25.000 /M2", normalPrice: "Rp.50.000", items: [
+                      "Visualisai 3D Eksterior (Render)",
+                      "Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)",
+                      "Potongan (melintang & memanjang)"
+                    ], color: "#1B4965"
+                  },
+                  {
+                    name: "PAKET PREMIUM", price: "Rp. 50.000 /M2", normalPrice: "Rp.100.000", items: [
+                      "Visualisai 3D Eksterior (Render)",
+                      "3D Jelajah Bangunan (BIM)",
+                      "Denah Perencanaan",
+                      "Tampak banguan (Depan, belakang, samping kanan & kiri)",
+                      "Potongan (melintang & memanjang)",
+                      "Rencana Atap",
+                      "Rencana Pola Lantai",
+                      "Rencana Plafon + Rangka Plafond",
+                      "Rencana Titik Lampu",
+                      "Rencana Plumbing",
+                      "Rencana Peletakan Kusen",
+                      "Detail-detail (Terkait Arsitektur)",
+                      "Rencana Pondasi",
+                      "Rencana Kolom & Pembalokan",
+                      "Gambar Detail Struktur",
+                      "RAB (Rencana Anggaran Biaya)"
+                    ], color: "#1B4965"
+                  },
+                  {
+                    name: "PAKET STANDAR", price: "Rp. 35.000 /M2", normalPrice: "Rp.70.000", items: [
+                      "Visualisai 3D Eksterior (Render)",
+                      "3D Jelajah Bangunan (BIM)",
+                      "Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)",
+                      "Tampak bangunan (Depan, belakang, samping kanan & kiri)",
+                      "Potongan (melintang & memanjang)",
+                      "Rencana Atap",
+                      "Rencana Pola Lantai",
+                      "Rencana Plafon + Rangka Plafond",
+                      "Rencana Titik Lampu",
+                      "Rencana Plumbing",
+                      "Rencana Peletakan Kusen",
+                      "Detail-detail (Terkait Arsitektur)"
+                    ], color: "#1B4965"
+                  },
+                ].map((paket, idx) => (
+                  <Box
+                    key={idx}
+                    bg={paket.color}
+                    borderRadius="xl"
+                    boxShadow="lg"
+                    overflow="hidden"
+                    _hover={{ transform: "scale(1.03)", boxShadow: "xl", transition: "0.3s" }}
+                    transition="0.3s"
+                    p={6}
+                    display="flex"
+                    flexDirection="column"
+                    height="100%"
                   >
-                  <FaWhatsapp size={32} color="#25D366" />
-                    <Text>PESAN PAKET PREMIUM</Text>
-                  </Link>
-              </Box>
-            </Box>
+                    {/* Header */}
+                    <Text fontSize="x-large" fontWeight="bold" color="white" align="center" mb={2}>
+                      {paket.name}
+                    </Text>
+                    <Text fontSize="x-large" fontWeight="bold" color="white" align="center" mb={2}>
+                      {paket.price}
+                    </Text>
+                    <Text fontSize="lg" color="white" align="center" mb={4}>
+                      Harga normal {paket.normalPrice} nikmati diskon 50%
+                    </Text>
 
-            {/* Item 3 */}
-            <Box
-              textAlign="left"
-              p={6}
-              bg="blue.700"
-              boxShadow="md"
-              borderRadius="xl"
-              _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
-              height="100%"
-              display="flex"
-              flexDirection="column"
-            >
+                    {/* List Items */}
+                    <Box flex="1" mb={4}>
+                      <Text fontSize="md" color="white" align="left">
+                        <ul style={{ paddingLeft: "20px" }}>
+                          {paket.items.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      </Text>
+                    </Box>
 
-              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
-                PAKET STANDAR
-              </Text>
-              <Text fontSize="x-large" fontWeight="bold" color="white" align={"center"}>
-                Rp. 35.000 /M2
-              </Text>
-              <Text mt={3} mx={10} fontSize="lg" color="white" align={"center"}>
-                Harga normal Rp.70.000 nikmati diskon 50%
-              </Text>
+                    {/* Buttons */}
+                    <Stack spacing={3} mt="auto">
+                      <Button
+                        colorScheme="whiteAlpha"
+                        bg="white"
+                        color="blue.700"
+                        size="md"
+                        leftIcon={<Text>📦</Text>}
+                        w="100%"
+                        fontWeight="bold"
+                      >
+                        CONTOH PRODUK
+                      </Button>
+                      <Link
+                        href={`https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20${paket.name}`}
+                        isExternal
+                        _hover={{ textDecoration: "none" }}
+                        w="100%"
+                      >
+                        <Button
+                          bg="white"
+                          color="blue.700"
+                          size="md"
+                          leftIcon={<FaWhatsapp size={20} color="#25D366" />}
+                          w="100%"
+                          fontWeight="bold"
+                        >
+                          PESAN {paket.name}
+                        </Button>
+                      </Link>
+                    </Stack>
+                  </Box>
+                ))}
+              </SimpleGrid>
+            )}
 
-              <Text mt={5} px={5} fontSize="md" color="white" align={"left"}>
-                <ul>
-                  <li>Visualisai 3D Eksterior (Render)</li>
-                  <li>3D Jelajah Bangunan (BIM)</li>
-                  <li>Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)</li>
-                  <li>Potongan (melintang & memanjang)</li>
-                  <li>Rencana Atap</li>
-                  <li>Rencana Pola Lantai</li>
-                  <li>Rencana Plafon + Rangka Plafond</li>
-                  <li>Rencana Titik Lampu</li>
-                  <li>Rencana Plumbing</li>
-                  <li>Rencana Peletakan Kusen</li>
-                  <li>Detail-detail (Terkait Arsitektur)</li>
-                </ul>
-              </Text>
-              {/* Tombol WhatsApp */}
-              <Box textAlign="center" mt="auto" pt={5} >
-                <Link
-                  href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20Paket%20Standar."
-                  isExternal
-                  _hover={{ textDecoration: "none" }}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px",
-                    borderRadius: "12px", // bulat banget
-                    backgroundColor: "white",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
-                    cursor: "pointer",
-                    userSelect: "none",
-                  }}
-                  aria-label="Pesan Paket Standar via WhatsApp"
-                >
-                  <FaWhatsapp size={32} color="#25D366" />
-                  <Text>PESAN PAKET STANDAR</Text>
-                </Link>
-              </Box>
-            </Box>
-          </SimpleGrid>
+            {/* Tab Content - Desain Interior */}
+            {activeTab === "desain-interior" && (
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
+                {[
+                  {
+                    name: "PAKET BASIC", price: "Rp. 25.000 /M2", normalPrice: "Rp.50.000", items: [
+                      "Visualisai 3D  (Render)",
+                      "Denah Perencanaan ",
+                      "Tampak Interior (Semua Sisi Dinding)"
+                    ], color: "#1B4965"
+                  },
+                  {
+                    name: "PAKET PREMIUM", price: "Rp. 50.000 /M2", normalPrice: "Rp.100.000", items: [
+                      "Visualisai 3D  (Render)",
+                      "3D Jelajah Bangunan (BIM)",
+                      "3D Jelajah Bangunan (Realistis)",
+                      "Denah Perencanaan ",
+                      "Tampak Interior (Semua Sisi Dinding)",
+                      "Rencana Perabot",
+                      "Rencana Pola Lantai",
+                      "Rencana Plafon",
+                      "Rencana Titik Lampu",
+                      "Detail-detail (Terkait Arsitektur)",
+                      "RAB (Rencana Anggaran Biaya)"
+                    ], color: "#1B4965"
+                  },
+                  {
+                    name: "PAKET STANDAR", price: "Rp. 35.000 /M2", normalPrice: "Rp.70.000", items: [
+                      "Visualisai 3D  (Render)",
+                      "3D Jelajah Bangunan (BIM)",
+                      "Denah Perencanaan",
+                      "Tampak Interior (Semua Sisi Dinding)",
+                      "Detail-detail (Terkait Arsitektur)"
+                    ], color: "#1B4965"
+                  },
+                ].map((paket, idx) => (
+                  <Box
+                    key={idx}
+                    bg={paket.color}
+                    borderRadius="xl"
+                    boxShadow="lg"
+                    overflow="hidden"
+                    _hover={{ transform: "scale(1.03)", boxShadow: "xl", transition: "0.3s" }}
+                    transition="0.3s"
+                    p={6}
+                    display="flex"
+                    flexDirection="column"
+                    height="100%"
+                  >
+                    {/* Header */}
+                    <Text fontSize="x-large" fontWeight="bold" color="white" align="center" mb={2}>
+                      {paket.name}
+                    </Text>
+                    <Text fontSize="x-large" fontWeight="bold" color="white" align="center" mb={2}>
+                      {paket.price}
+                    </Text>
+                    <Text fontSize="lg" color="white" align="center" mb={4}>
+                      Harga normal {paket.normalPrice} nikmati diskon 50%
+                    </Text>
+
+                    {/* List Items */}
+                    <Box flex="1" mb={4}>
+                      <Text fontSize="md" color="white" align="left">
+                        <ul style={{ paddingLeft: "20px" }}>
+                          {paket.items.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      </Text>
+                    </Box>
+
+                    {/* Buttons */}
+                    <Stack spacing={3} mt="auto">
+                      <Button
+                        colorScheme="whiteAlpha"
+                        bg="white"
+                        color="blue.700"
+                        size="md"
+                        leftIcon={<Text>📦</Text>}
+                        w="100%"
+                        fontWeight="bold"
+                      >
+                        CONTOH PRODUK
+                      </Button>
+                      <Link
+                        href={`https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20${paket.name}`}
+                        isExternal
+                        _hover={{ textDecoration: "none" }}
+                        w="100%"
+                      >
+                        <Button
+                          bg="white"
+                          color="blue.700"
+                          size="md"
+                          leftIcon={<FaWhatsapp size={20} color="#25D366" />}
+                          w="100%"
+                          fontWeight="bold"
+                        >
+                          PESAN {paket.name}
+                        </Button>
+                      </Link>
+                    </Stack>
+                  </Box>
+                ))}
+              </SimpleGrid>
+            )}
+          </Box>
           <Box pb={5}>
             {/* Alert */}
             <Alert

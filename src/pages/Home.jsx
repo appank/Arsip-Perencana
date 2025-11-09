@@ -12,6 +12,7 @@ import {
   ModalOverlay,
   ModalContent,
   ModalBody,
+  ModalCloseButton,
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
@@ -37,6 +38,27 @@ function Home() {
   const [selectedImg, setSelectedImg] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [activeTab, setActiveTab] = useState("desain-bangunan");
+
+  // Kumpulan gambar portofolio per tab
+  const portfolioImagesMap = {
+    "desain-bangunan": [
+      portfolioImg1,
+      portfolioImg2,
+      portfolioImg3,
+      portfolioImg4,
+      portfolioImg5,
+      portfolioImg6,
+    ],
+    // Belum ada aset interior terpisah; sementara gunakan gambar yang sama
+    "desain-interior": [
+      portfolioImg1,
+      portfolioImg2,
+      portfolioImg3,
+      portfolioImg4,
+      portfolioImg5,
+      portfolioImg6,
+    ],
+  };
 
   const handleImageClick = (imgSrc) => {
     setSelectedImg(imgSrc);
@@ -218,19 +240,16 @@ function Home() {
               <span style={{ color: 'blue' }}>Arsip Perencana</span> adalah studio arsitektur yang berfokus pada perencanaan dan pengembangan proyek dengan pendekatan teknologi Building Information Modeling (BIM). Dengan BIM, setiap proyek yang kami kerjakan memiliki tingkat akurasi yang tinggi dalam perencanaan, visualisasi, hingga detail teknis yang dibutuhkan untuk pelaksanaan proyek. Teknologi ini memungkinkan proses desain menjadi lebih efisien, terintegrasi, dan minim kesalahan sejak tahap awal.
               </Text>
             <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
-                Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi:
+              Kami tidak hanya menangani proyek hunian maupun bangunan komersial, tetapi juga menyediakan layanan penyusunan dokumen teknis lengkap untuk keperluan proyek pemerintahan maupun non-pemerintahan. Layanan tersebut meliputi: 
               </Text>
             <Text mt={5} px={5} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
                   <ul>
                     <li>Detail Engineering Design (DED)</li>
                     <li>Rencana Anggaran Biaya (RAB)</li>
-                    <li>Spesifikasi Teknis</li>
-                    <li>Dokumen Teknis Lainnya sesuai kebutuhan proyek</li>
-                  </ul>
+                <li>Spesifikasi Teknis</li>
+              </ul>
                 </Text>
-            <Text mt={3} fontSize={{ base: "sm", sm: "md", md: "lg", }} color="gray.700" align={"left"}>
-                Kalau iya, Arsip Perencana siap bantu wujudkan proyek yang anda rencanakan dengan proses yang rapi, jelas, dan sesuai kebutuhan.
-              </Text>
+
             </Box>
              {/* Image Section */}
           <Image
@@ -249,7 +268,10 @@ function Home() {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        bg="white"
+        // bg="white"
+        bg="gray.70"
+        pt={{ base: "auto", md: "auto" }}
+        pb={{ base: "auto", md: "auto" }}
         p={5}
       >
         <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700">
@@ -266,7 +288,7 @@ function Home() {
           <Box
             textAlign="left"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -284,7 +306,7 @@ function Home() {
           <Box
             textAlign="left"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -301,7 +323,7 @@ function Home() {
           <Box
             textAlign="left"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -317,7 +339,7 @@ function Home() {
           <Box
             textAlign="center"
             p={5}
-            bg="blue.700"
+            bg="#1B4965"
             boxShadow="md"
             borderRadius="xl"
             _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
@@ -332,16 +354,73 @@ function Home() {
           </Box>
 
         </SimpleGrid>
+        <Box height="40px" />
       </Box>
       {/* Portofolio Section */}
 
       <Box id="portfolio" minH="auto" display="flex" flexDirection="column" bg={"white"} alignItems="center" justifyContent="center" px={6} py={10}>
-        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
-          Real Project Yang Kami Kerjakan
-        </Text>
+        {/* Tab Buttons dipindah ke bawah judul Portfolio */}
         <Box height="20px" />
+        <Flex
+          mb={8}
+          gap={{ base: 4, md: 6 }}
+          justifyContent="center"
+          w="full"
+          maxW="800px"
+        >
+
+          <Button
+            onClick={() => setActiveTab("desain-bangunan")}
+            borderRadius="18px"
+            size="lg"
+            px={{ base: 8, md: 10, lg: 12, xl: 14 }}
+            py={{ base: 5, md: 6, lg: 7 }}
+            shadow={"md"}
+            fontSize={{ base: "md", md: "lg", lg: "2xl" }}
+            // fontSize={{ base: "xl", lg: "2xl" }}
+            borderLeftWidth="4px"
+            borderRightWidth="4px"
+            borderTopWidth="4px"
+            borderBottomWidth="4px"
+            borderColor={activeTab === "desain-bangunan" ? "gray.700" : "gray.700"}
+            bg={activeTab === "desain-bangunan" ? "#1B4965" : "gray.100"}
+            color={activeTab === "desain-bangunan" ? "white" : "gray.800"}
+            _hover={{ bg: activeTab === "desain-bangunan" ? "#235B7E" : "gray.200", borderColor: activeTab === "desain-bangunan" ? "blue.800" : "gray.400" }}
+            fontWeight={activeTab === "desain-bangunan" ? "bold" : "semibold"}
+          >
+            Desain Bangunan
+          </Button>
+          <Button
+            onClick={() => setActiveTab("desain-interior")}
+            borderRadius="18px"
+            size="lg"
+            px={{ base: 8, md: 10, lg: 12, xl: 14 }}
+            py={{ base: 5, md: 6, lg: 7 }}
+            shadow={"md"}
+            fontSize={{ base: "md", md: "lg", lg: "2xl" }}
+            // fontSize={{ base: "xl", lg: "2xl" }}
+            borderLeftWidth="4px"
+            borderRightWidth="4px"
+            borderTopWidth="4px"
+            borderBottomWidth="4px"
+            borderColor={activeTab === "desain-interior" ? "gray.700" : "gray.700"}
+            bg={activeTab === "desain-interior" ? "#1B4965" : "gray.200"}
+            color={activeTab === "desain-interior" ? "white" : "gray.800"}
+            _hover={{ bg: activeTab === "desain-interior" ? "#235B7E" : "gray.300", borderColor: activeTab === "desain-interior" ? "#235B7E" : "gray.500" }}
+            fontWeight={activeTab === "desain-interior" ? "bold" : "semibold"}
+          >
+            Desain Interior
+          </Button>
+        </Flex>
+
+
+        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
+          {` Real Project Desain ${activeTab === 'desain-bangunan' ? 'Bangunan' : 'Interior'} Yang Kami Kerjakan`}
+        </Text>
+        <Box height="12px" />
+
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={7}>
-          {[portfolioImg1, portfolioImg2, portfolioImg3, portfolioImg4, portfolioImg5, portfolioImg6].map((img, idx) => (
+          {(portfolioImagesMap[activeTab] || []).map((img, idx) => (
             <Box
               key={idx}
               boxShadow="md"
@@ -362,7 +441,14 @@ function Home() {
         </SimpleGrid>
         <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
           <ModalOverlay />
-          <ModalContent bg="transparent" boxShadow="none" maxW="fit-content">
+          <ModalContent bg="transparent" boxShadow="none" maxW="fit-content" position="relative">
+            <ModalCloseButton
+              color="white"
+              bg="blackAlpha.600"
+              _hover={{ bg: "blackAlpha.700" }}
+              borderRadius="full"
+              onClick={onClose}
+            />
             <ModalBody p={0}>
               <Image
                 src={selectedImg}
@@ -394,12 +480,13 @@ function Home() {
         <Flex direction="column" p={8} align="center" justify="center" gap={8} w="full" maxW="1200px">
           {/* Teks di atas */}
           <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
-            Pilih Paket Sesuai Kebutuhan Anda
+            {`Pilih Paket Desain ${activeTab === 'desain-bangunan' ? 'Bangunan' : 'Interior'} Sesuai Kebutuhan Anda:`}
           </Text>
           {/* Tab Section - Desain Bangunan & Desain Interior */}
           <Box width="100%" >
             {/* Tab Buttons */}
             <Flex
+              display="none"
               borderBottom="2px solid"
               borderColor="gray.200"
               mb={6}
@@ -442,11 +529,6 @@ function Home() {
               </Box>
             </Flex>
 
-            {/* Tab Title */}
-            <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color="gray.800" mb={6} textAlign="center">
-              {activeTab === "desain-bangunan" && "Koleksi Paket Desain Bangunan"}
-              {activeTab === "desain-interior" && "Koleksi Paket Desain Interior"}
-            </Text>
 
             {/* Tab Content - Desain Bangunan */}
             {activeTab === "desain-bangunan" && (
@@ -455,18 +537,16 @@ function Home() {
                   {
                     name: "PAKET BASIC", price: "Rp. 25.000 /M2", normalPrice: "Rp.50.000", items: [
                       "Visualisai 3D Eksterior (Render)",
-                      "3D Jelajah Bangunan (BIM)",
-                      "Denah Perencanaan",
-                      "Tampak bangunan (Depan, belakang, samping kanan & kiri)",
+                      "Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)",
                       "Potongan (melintang & memanjang)"
-                    ], color: "#4361ee"
+                    ], color: "#1B4965"
                   },
                   {
                     name: "PAKET PREMIUM", price: "Rp. 50.000 /M2", normalPrice: "Rp.100.000", items: [
                       "Visualisai 3D Eksterior (Render)",
                       "3D Jelajah Bangunan (BIM)",
                       "Denah Perencanaan",
-                      "Tampak bangunan (Depan, belakang, samping kanan & kiri)",
+                      "Tampak banguan (Depan, belakang, samping kanan & kiri)",
                       "Potongan (melintang & memanjang)",
                       "Rencana Atap",
                       "Rencana Pola Lantai",
@@ -479,13 +559,13 @@ function Home() {
                       "Rencana Kolom & Pembalokan",
                       "Gambar Detail Struktur",
                       "RAB (Rencana Anggaran Biaya)"
-                    ], color: "#3a86ff"
+                    ], color: "#1B4965"
                   },
                   {
                     name: "PAKET STANDAR", price: "Rp. 35.000 /M2", normalPrice: "Rp.70.000", items: [
                       "Visualisai 3D Eksterior (Render)",
                       "3D Jelajah Bangunan (BIM)",
-                      "Denah Perencanaan",
+                      "Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)",
                       "Tampak bangunan (Depan, belakang, samping kanan & kiri)",
                       "Potongan (melintang & memanjang)",
                       "Rencana Atap",
@@ -495,7 +575,7 @@ function Home() {
                       "Rencana Plumbing",
                       "Rencana Peletakan Kusen",
                       "Detail-detail (Terkait Arsitektur)"
-                    ], color: "#4895ef"
+                    ], color: "#1B4965"
                   },
                 ].map((paket, idx) => (
                   <Box
@@ -544,7 +624,7 @@ function Home() {
                         w="100%"
                         fontWeight="bold"
                       >
-                        Produk
+                        CONTOH PRODUK
                       </Button>
                       <Link
                         href={`https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20${paket.name}`}
@@ -575,40 +655,34 @@ function Home() {
                 {[
                   {
                     name: "PAKET BASIC", price: "Rp. 25.000 /M2", normalPrice: "Rp.50.000", items: [
-                      "Konsultasi Desain Interior",
-                      "Visualisasi 3D Interior",
-                      "Denah Layout Ruangan",
-                      "Pemilihan Warna & Material",
-                      "List Furniture & Aksesoris"
-                    ], color: "#4361ee"
+                      "Visualisai 3D  (Render)",
+                      "Denah Perencanaan ",
+                      "Tampak Interior (Semua Sisi Dinding)"
+                    ], color: "#1B4965"
                   },
                   {
                     name: "PAKET PREMIUM", price: "Rp. 50.000 /M2", normalPrice: "Rp.100.000", items: [
-                      "Konsultasi Desain Interior",
-                      "Visualisasi 3D Interior",
-                      "Denah Layout Ruangan",
-                      "Pemilihan Warna & Material",
-                      "List Furniture & Aksesoris",
-                      "Detail Furnitur Custom",
-                      "Rencana Pencahayaan",
-                      "Rencana Plafon & Partisi",
-                      "Detail Material & Finishing",
-                      "RAB Interior",
-                      "Gambar Kerja Detail",
-                      "3D Walkthrough Animation"
-                    ], color: "#3a86ff"
+                      "Visualisai 3D  (Render)",
+                      "3D Jelajah Bangunan (BIM)",
+                      "3D Jelajah Bangunan (Realistis)",
+                      "Denah Perencanaan ",
+                      "Tampak Interior (Semua Sisi Dinding)",
+                      "Rencana Perabot",
+                      "Rencana Pola Lantai",
+                      "Rencana Plafon",
+                      "Rencana Titik Lampu",
+                      "Detail-detail (Terkait Arsitektur)",
+                      "RAB (Rencana Anggaran Biaya)"
+                    ], color: "#1B4965"
                   },
                   {
                     name: "PAKET STANDAR", price: "Rp. 35.000 /M2", normalPrice: "Rp.70.000", items: [
-                      "Konsultasi Desain Interior",
-                      "Visualisasi 3D Interior",
-                      "Denah Layout Ruangan",
-                      "Pemilihan Warna & Material",
-                      "List Furniture & Aksesoris",
-                      "Detail Furnitur Custom",
-                      "Rencana Pencahayaan",
-                      "Rencana Plafon & Partisi"
-                    ], color: "#4895ef"
+                      "Visualisai 3D  (Render)",
+                      "3D Jelajah Bangunan (BIM)",
+                      "Denah Perencanaan",
+                      "Tampak Interior (Semua Sisi Dinding)",
+                      "Detail-detail (Terkait Arsitektur)"
+                    ], color: "#1B4965"
                   },
                 ].map((paket, idx) => (
                   <Box
@@ -657,7 +731,7 @@ function Home() {
                         w="100%"
                         fontWeight="bold"
                       >
-                        Produk
+                        CONTOH PRODUK
                       </Button>
                       <Link
                         href={`https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20${paket.name}`}
