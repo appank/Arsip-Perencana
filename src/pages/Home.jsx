@@ -48,12 +48,12 @@ function Home() {
     ],
     // Belum ada aset interior terpisah; sementara gunakan gambar yang sama
     "desain-interior": [
-      portfolioImg1,
-      portfolioImg2,
-      portfolioImg3,
-      portfolioImg4,
-      portfolioImg5,
-      portfolioImg6,
+      // portfolioImg1,
+      // portfolioImg2,
+      // portfolioImg3,
+      // portfolioImg4,
+      // portfolioImg5,
+      // portfolioImg6,
     ],
   };
 
@@ -411,9 +411,19 @@ function Home() {
         </Flex>
 
 
-        <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
+        {/* <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color="gray.700" textAlign="center">
           {` Real Project Desain ${activeTab === 'desain-bangunan' ? 'Bangunan' : 'Interior'} Yang Kami Kerjakan`}
-        </Text>
+        </Text> */}
+        {activeTab === 'desain-bangunan' && (
+          <Text
+            fontSize={{ base: "2xl", md: "4xl" }}
+            fontWeight="bold"
+            color="gray.700"
+            textAlign="center"
+          >
+            Real Project Desain Bangunan Yang Kami Kerjakan
+          </Text>
+        )}
         <Box height="12px" />
 
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={7}>
@@ -532,14 +542,14 @@ function Home() {
               <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
                 {[
                   {
-                    name: "PAKET BASIC", price: "Rp. 25.000 /M2", normalPrice: "Rp.50.000", items: [
+                    name: "PAKET BASIC", price: "Rp. 25.000 /M2", normalPrice: "Rp.50.000", diskon: "50%", items: [
                       "Visualisai 3D Eksterior (Render)",
                       "Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)",
                       "Potongan (melintang & memanjang)"
                     ], color: "#1B4965"
                   },
                   {
-                    name: "PAKET PREMIUM", price: "Rp. 50.000 /M2", normalPrice: "Rp.100.000", items: [
+                    name: "PAKET PREMIUM", price: "Rp. 50.000 /M2", normalPrice: "Rp.100.000", diskon: "50%", items: [
                       "Visualisai 3D Eksterior (Render)",
                       "3D Jelajah Bangunan (BIM)",
                       "Denah Perencanaan",
@@ -559,7 +569,7 @@ function Home() {
                     ], color: "#1B4965"
                   },
                   {
-                    name: "PAKET STANDAR", price: "Rp. 35.000 /M2", normalPrice: "Rp.70.000", items: [
+                    name: "PAKET STANDAR", price: "Rp. 35.000 /M2", normalPrice: "Rp.70.000", diskon: "50%", items: [
                       "Visualisai 3D Eksterior (Render)",
                       "3D Jelajah Bangunan (BIM)",
                       "Denah Perencanaan Tampak banguan (Depan, belakang, samping kanan & kiri)",
@@ -651,14 +661,14 @@ function Home() {
               <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
                 {[
                   {
-                    name: "PAKET BASIC", price: "Rp. 25.000 /M2", normalPrice: "Rp.50.000", items: [
+                    name: "PAKET BASIC", price: "Rp 20.000 /M2", normalPrice: "Rp.50.000", diskon: "60%", items: [
                       "Visualisai 3D  (Render)",
                       "Denah Perencanaan ",
                       "Tampak Interior (Semua Sisi Dinding)"
                     ], color: "#1B4965"
                   },
                   {
-                    name: "PAKET PREMIUM", price: "Rp. 50.000 /M2", normalPrice: "Rp.100.000", items: [
+                    name: "PAKET PREMIUM", price: "Rp 40.000 /M2", normalPrice: "Rp.100.000", diskon: "60%", items: [
                       "Visualisai 3D  (Render)",
                       "3D Jelajah Bangunan (BIM)",
                       "3D Jelajah Bangunan (Realistis)",
@@ -673,7 +683,7 @@ function Home() {
                     ], color: "#1B4965"
                   },
                   {
-                    name: "PAKET STANDAR", price: "Rp. 35.000 /M2", normalPrice: "Rp.70.000", items: [
+                    name: "PAKET STANDAR", price: "Rp 28.000 /M2", normalPrice: "Rp.70.000", diskon: "60%", items: [
                       "Visualisai 3D  (Render)",
                       "3D Jelajah Bangunan (BIM)",
                       "Denah Perencanaan",
@@ -703,7 +713,7 @@ function Home() {
                       {paket.price}
                     </Text>
                     <Text fontSize="lg" color="white" align="center" mb={4}>
-                      Harga normal {paket.normalPrice} nikmati diskon 50%
+                      Harga normal {paket.normalPrice} nikmati diskon  {paket.diskon}
                     </Text>
 
                     {/* List Items */}
