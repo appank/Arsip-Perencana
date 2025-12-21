@@ -14,7 +14,7 @@ import {
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaFilePdf } from "react-icons/fa";
 import DashboardLayout from "../components/DashboardLayout";
 import { useState } from "react";
 import profileImg from "../assets/arsib_logo.png";
@@ -27,6 +27,9 @@ import portfolioImg5 from "../assets/portfolio5.jpeg";
 import portfolioImg6 from "../assets/portfolio6.jpeg";
 import character1 from "../assets/character1.png";
 import character3 from "../assets/character3.png";
+import pdfBasic from "../assets/pdf/RAB - (Premium).pdf";
+import pdfStandar from "../assets/pdf/DED - (Standar).pdf";
+import pdfPremium from "../assets/pdf/DED - (Premium).pdf";
 import { Link as ScrollLink } from "react-scroll";
 import { Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
 function Home() {
@@ -35,6 +38,10 @@ function Home() {
   const [selectedImg, setSelectedImg] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [activeTab, setActiveTab] = useState("desain-bangunan");
+
+  // State for product modal
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const { isOpen: isProductModalOpen, onOpen: onProductModalOpen, onClose: onProductModalClose } = useDisclosure();
 
   // Kumpulan gambar portofolio per tab
   const portfolioImagesMap = {
@@ -57,9 +64,36 @@ function Home() {
     ],
   };
 
+  // Product examples data
+  const productExamples = {
+    "PAKET BASIC": {
+      title: "Contoh Produk PAKET BASIC - Desain Bangunan",
+      image: portfolioImg3,
+      description: "Paket Basic adalah pilihan tepat untuk Anda yang baru memulai perencanaan bangunan. Dalam paket ini Anda akan mendapatkan:\n\n✓ Visualisasi 3D Eksterior (Render) berkualitas tinggi yang membantu Anda melihat bentuk dan tampilan bangunan secara realistis\n✓ Denah Perencanaan lengkap dengan ukuran dan tata ruang yang efisien\n✓ Tampak Bangunan dari 4 sisi (Depan, Belakang, Kanan, Kiri) untuk pemahaman menyeluruh\n✓ Potongan Melintang & Memanjang untuk visualisasi struktur internal\n\nCocok untuk Anda yang ingin memvisualisasikan konsep dasar hunian impian dengan harga terjangkau!",
+      pdfLink: pdfBasic
+    },
+    "PAKET STANDAR": {
+      title: "Contoh Produk PAKET STANDAR - Desain Bangunan",
+      image: portfolioImg3,
+      description: "Paket Standar memberikan solusi perencanaan yang lebih komprehensif untuk bangunan Anda. Paket ini mencakup:\n\n✓ Semua fitur dari Paket Basic\n✓ 3D Jelajah Bangunan (BIM) - teknologi terkini untuk eksplorasi desain secara interaktif\n✓ Rencana Atap dengan detail konstruksi\n✓ Rencana Pola Lantai untuk setiap ruangan\n✓ Rencana Plafon + Rangka Plafond lengkap\n✓ Rencana Titik Lampu untuk pencahayaan optimal\n✓ Rencana Plumbing (air bersih & kotor)\n✓ Rencana Peletakan Kusen\n✓ Detail-detail Arsitektur\n\nIdeal untuk Anda yang ingin perencanaan lebih detail dan siap untuk tahap konstruksi!",
+      pdfLink: pdfStandar
+    },
+    "PAKET PREMIUM": {
+      title: "Contoh Produk PAKET PREMIUM - Desain Bangunan",
+      image: portfolioImg3,
+      description: "Paket Premium adalah solusi paling lengkap dan profesional untuk proyek bangunan Anda. Paket all-in-one ini mencakup:\n\n✓ Semua fitur dari Paket Standar\n✓ Rencana Pondasi dengan perhitungan struktur\n✓ Rencana Kolom & Pembalokan detail\n✓ Gambar Detail Struktur lengkap\n✓ RAB (Rencana Anggaran Biaya) untuk estimasi biaya akurat\n✓ Spesifikasi teknis material\n✓ Dokumentasi lengkap siap untuk pengajuan IMB\n\nSempurna untuk proyek yang membutuhkan dokumentasi teknis menyeluruh, akurat, dan profesional. Hemat waktu dan biaya dengan perencanaan yang matang sejak awal!",
+      pdfLink: pdfPremium
+    }
+  };
+
   const handleImageClick = (imgSrc) => {
     setSelectedImg(imgSrc);
     onOpen();
+  };
+
+  const handleProductClick = (packageName) => {
+    setSelectedProduct(productExamples[packageName]);
+    onProductModalOpen();
   };
  const menuItems = [
   { name: "Tentang Kami", to: "about2" },
@@ -630,6 +664,7 @@ function Home() {
                         leftIcon={<Text>📦</Text>}
                         w="100%"
                         fontWeight="bold"
+                        onClick={() => handleProductClick(paket.name)}
                       >
                         CONTOH PRODUK
                       </Button>
@@ -737,6 +772,7 @@ function Home() {
                         leftIcon={<Text>📦</Text>}
                         w="100%"
                         fontWeight="bold"
+                        onClick={() => handleProductClick(paket.name)}
                       >
                         CONTOH PRODUK
                       </Button>
@@ -872,6 +908,72 @@ function Home() {
           </Box>
         </SimpleGrid>
       </Box>
+
+      {/* Product Modal */}
+      <Modal isOpen={isProductModalOpen} onClose={onProductModalClose} size="xl" isCentered>
+        <ModalOverlay bg="blackAlpha.600" />
+        <ModalContent mx={4}>
+          <ModalCloseButton color="gray.600" _hover={{ bg: "gray.100" }} />
+          <ModalBody p={0}>
+            {selectedProduct && (
+              <Box>
+                {/* Product Image */}
+                <Image
+                  src={selectedProduct.image}
+                  alt={selectedProduct.title}
+                  w="100%"
+                  h={{ base: "250px", md: "350px" }}
+                  objectFit="cover"
+                  borderTopRadius="md"
+                />
+
+                {/* Product Content */}
+                <Box p={6}>
+                  {/* Title */}
+                  <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color="gray.700" mb={4}>
+                    {selectedProduct.title}
+                  </Text>
+
+                  {/* Description */}
+                  <Text fontSize={{ base: "sm", md: "md" }} color="gray.600" mb={6} lineHeight="tall" whiteSpace="pre-line">
+                    {selectedProduct.description}
+                  </Text>
+
+                  {/* Buttons */}
+                  <Stack spacing={3}>
+                    <Link
+                      href={selectedProduct.pdfLink}
+                      download
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      <Button
+                        bg="red.600"
+                        color="white"
+                        size="lg"
+                        w="100%"
+                        leftIcon={<FaFilePdf size={24} />}
+                        _hover={{ bg: "red.700" }}
+                        fontWeight="bold"
+                      >
+                        Unduh PDF
+                      </Button>
+                    </Link>
+                    <Button
+                      variant="outline"
+                      colorScheme="gray"
+                      size="lg"
+                      w="100%"
+                      onClick={onProductModalClose}
+                    >
+                      Tutup
+                    </Button>
+                  </Stack>
+                </Box>
+              </Box>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </DashboardLayout>
 
   );
