@@ -120,7 +120,6 @@ const Pricing = ({ activeCategory = "bangunan" }: PricingProps) => {
   ];
   const interiorPremiumFeatures = [
     "Visualisai 3D (Render)",
-    "3D Jelajah Bangunan (BIM)",
     "3D Jelajah Bangunan (Realistis/ Enscape)",
     "Denah Perencanaan",
     "Tampak Interior (Semua Sisi Dinding)",
@@ -133,7 +132,6 @@ const Pricing = ({ activeCategory = "bangunan" }: PricingProps) => {
   ];
   const interiorStandarFeatures = [
     "Visualisai 3D (Render)",
-    "3D Jelajah Bangunan (BIM)",
     "Denah Perencanaan",
     "Tampak Interior (Semua Sisi Dinding)",
     "Detail-detail (Terkait Arsitektur)",
