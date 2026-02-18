@@ -138,6 +138,11 @@ const Pricing = ({ activeCategory = "bangunan" }: PricingProps) => {
     "Tampak Interior (Semua Sisi Dinding)",
     "Detail-detail (Terkait Arsitektur)",
   ];
+  const interiorPrices: Record<string, { price: string; originalPrice: string; discount: string }> = {
+    "PAKET BASIC": { price: "20.000", originalPrice: "50.000", discount: "60%" },
+    "PAKET PREMIUM": { price: "40.000", originalPrice: "100.000", discount: "60%" },
+    "PAKET STANDAR": { price: "28.000", originalPrice: "70.000", discount: "60%" },
+  };
 
   const openDialog = (packageType: "basic" | "standar" | "premium") => {
     setSelectedPackage(packageType);
@@ -182,6 +187,22 @@ const Pricing = ({ activeCategory = "bangunan" }: PricingProps) => {
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             {packages.map((pkg, index) => (
+              (() => {
+                const interiorPricing = interiorPrices[pkg.name];
+                const displayedPrice =
+                  activeCategory === "interior" && interiorPricing
+                    ? interiorPricing.price
+                    : pkg.price;
+                const displayedOriginalPrice =
+                  activeCategory === "interior" && interiorPricing
+                    ? interiorPricing.originalPrice
+                    : pkg.originalPrice;
+                const displayedDiscount =
+                  activeCategory === "interior" && interiorPricing
+                    ? interiorPricing.discount
+                    : pkg.discount;
+
+                return (
               <div
                 key={index}
                 className={`animate-fade-up relative bg-card rounded-3xl shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-2 overflow-hidden flex flex-col ${
@@ -209,16 +230,16 @@ const Pricing = ({ activeCategory = "bangunan" }: PricingProps) => {
                   <div className="mb-6">
                     <div className="flex items-baseline gap-2">
                       <span className="text-4xl font-bold text-primary">
-                        Rp. {pkg.price}
+                        Rp. {displayedPrice}
                       </span>
                       <span className="text-muted-foreground">/M²</span>
                     </div>
                     <div className="flex items-center gap-2 mt-2">
                       <span className="text-muted-foreground line-through text-sm">
-                        Rp.{pkg.originalPrice}
+                        Rp.{displayedOriginalPrice}
                       </span>
                       <span className="bg-destructive/10 text-destructive px-2 py-0.5 rounded text-xs font-semibold">
-                        Diskon {pkg.discount}
+                        Diskon {displayedDiscount}
                       </span>
                     </div>
                   </div>
@@ -273,6 +294,8 @@ const Pricing = ({ activeCategory = "bangunan" }: PricingProps) => {
                   </div>
                 </div>
               </div>
+                );
+              })()
             ))}
           </div>
 
