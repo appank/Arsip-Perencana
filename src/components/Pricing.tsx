@@ -104,9 +104,40 @@ const packages = [
   },
 ];
 
-const Pricing = () => {
+type DesignCategory = "bangunan" | "interior";
+
+interface PricingProps {
+  activeCategory?: DesignCategory;
+}
+
+const Pricing = ({ activeCategory = "bangunan" }: PricingProps) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<"basic" | "standar" | "premium" | null>(null);
+  const interiorBasicFeatures = [
+    "Visualisai 3D (Render)",
+    "Denah Perencanaan",
+    "Tampak Interior (Semua Sisi Dinding)",
+  ];
+  const interiorPremiumFeatures = [
+    "Visualisai 3D (Render)",
+    "3D Jelajah Bangunan (BIM)",
+    "3D Jelajah Bangunan (Realistis/ Enscape)",
+    "Denah Perencanaan",
+    "Tampak Interior (Semua Sisi Dinding)",
+    "Rencana Perabot",
+    "Rencana Pola Lantai",
+    "Rencana Plafon",
+    "Rencana Titik Lampu",
+    "Detail-detail (Terkait Arsitektur)",
+    "RAB (Rencana Anggaran Biaya)",
+  ];
+  const interiorStandarFeatures = [
+    "Visualisai 3D (Render)",
+    "3D Jelajah Bangunan (BIM)",
+    "Denah Perencanaan",
+    "Tampak Interior (Semua Sisi Dinding)",
+    "Detail-detail (Terkait Arsitektur)",
+  ];
 
   const openDialog = (packageType: "basic" | "standar" | "premium") => {
     setSelectedPackage(packageType);
@@ -143,7 +174,7 @@ const Pricing = () => {
               Paket Harga
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Pilih Paket Desain Bangunan{" "}
+              Pilih Paket Desain {activeCategory === "interior" ? "Interior" : "Bangunan"}{" "}
               <span className="text-primary">Sesuai Kebutuhan</span>
             </h2>
           </div>
@@ -194,7 +225,15 @@ const Pricing = () => {
 
                   {/* Features */}
                   <ul className="space-y-3 mb-8 flex-1">
-                    {pkg.features.map((feature, idx) => (
+                    {(
+                      activeCategory === "interior" && pkg.name === "PAKET BASIC"
+                        ? interiorBasicFeatures
+                        : activeCategory === "interior" && pkg.name === "PAKET PREMIUM"
+                        ? interiorPremiumFeatures
+                        : activeCategory === "interior" && pkg.name === "PAKET STANDAR"
+                        ? interiorStandarFeatures
+                        : pkg.features
+                    ).map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                         <span className="text-foreground/80 text-sm">

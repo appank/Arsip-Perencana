@@ -6,6 +6,8 @@ import portfolio3 from "@/assets/portfolio3.jpeg";
 import portfolio4 from "@/assets/portfolio4.jpeg";
 import portfolio5 from "@/assets/portfolio5.jpeg";
 import portfolio6 from "@/assets/portfolio6.jpeg";
+import ruangkantorAcs from "@/assets/ruangkantor_acs.jpg";
+import ruangtamuMrAg from "@/assets/ruangtamu_mr_ag.jpg";
 
 const portfolioItems = [
   { id: 1, image: portfolio1, category: "bangunan" },
@@ -14,11 +16,28 @@ const portfolioItems = [
   { id: 4, image: portfolio4, category: "bangunan" },
   { id: 5, image: portfolio5, category: "bangunan" },
   { id: 6, image: portfolio6, category: "bangunan" },
+  { id: 7, image: ruangkantorAcs, category: "interior" },
+  { id: 8, image: ruangtamuMrAg, category: "interior" },
 ];
 
-const Portfolio = () => {
-  const [activeTab, setActiveTab] = useState("bangunan");
+type DesignCategory = "bangunan" | "interior";
+
+interface PortfolioProps {
+  activeTab?: DesignCategory;
+  onTabChange?: (tab: DesignCategory) => void;
+}
+
+const Portfolio = ({ activeTab: externalActiveTab, onTabChange }: PortfolioProps) => {
+  const [internalActiveTab, setInternalActiveTab] = useState<DesignCategory>("bangunan");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const activeTab = externalActiveTab ?? internalActiveTab;
+
+  const handleTabChange = (tab: DesignCategory) => {
+    if (externalActiveTab === undefined) {
+      setInternalActiveTab(tab);
+    }
+    onTabChange?.(tab);
+  };
 
   const filteredItems = portfolioItems.filter(
     (item) => item.category === activeTab
@@ -66,7 +85,7 @@ const Portfolio = () => {
           {/* Tab Buttons */}
           <div className="flex justify-center gap-4 mb-12 animate-fade-up">
             <button
-              onClick={() => setActiveTab("bangunan")}
+              onClick={() => handleTabChange("bangunan")}
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                 activeTab === "bangunan"
                   ? "bg-primary text-primary-foreground shadow-glow"
@@ -76,7 +95,7 @@ const Portfolio = () => {
               Desain Bangunan
             </button>
             <button
-              onClick={() => setActiveTab("interior")}
+              onClick={() => handleTabChange("interior")}
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                 activeTab === "interior"
                   ? "bg-primary text-primary-foreground shadow-glow"
@@ -105,11 +124,6 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {activeTab === "interior" && (
-            <div className="text-center py-16 text-muted-foreground animate-fade-in">
-              <p className="text-lg">Segera hadir portfolio desain interior...</p>
-            </div>
-          )}
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -9,7 +10,11 @@ import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
+type DesignCategory = "bangunan" | "interior";
+
 const Index = () => {
+  const [activeCategory, setActiveCategory] = useState<DesignCategory>("bangunan");
+
   return (
     <>
       <Helmet>
@@ -37,8 +42,8 @@ const Index = () => {
         <ProblemSection />
         <About />
         <Services />
-        <Portfolio />
-        <Pricing />
+        <Portfolio activeTab={activeCategory} onTabChange={setActiveCategory} />
+        <Pricing activeCategory={activeCategory} />
         <Footer />
         <WhatsAppButton />
       </main>
