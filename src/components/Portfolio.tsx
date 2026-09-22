@@ -6,8 +6,13 @@ import portfolio3 from "@/assets/portfolio3.jpeg";
 import portfolio4 from "@/assets/portfolio4.jpeg";
 import portfolio5 from "@/assets/portfolio5.jpeg";
 import portfolio6 from "@/assets/portfolio6.jpeg";
+import portfolio7 from "@/assets/portfolio7.jpeg";
 import ruangkantorAcs from "@/assets/ruangkantor_acs.jpg";
 import ruangtamuMrAg from "@/assets/ruangtamu_mr_ag.jpg";
+import ruangdapur1 from "@/assets/ruangdapur_1.jpeg";
+import tempattidur1 from "@/assets/tempattidur_1.jpeg";
+import tempattidur2 from "@/assets/tempattidur_2.jpeg";
+import ruangtamu1 from "@/assets/ruangtamu_1.jpeg";
 
 const portfolioItems = [
   { id: 1, image: portfolio1, category: "bangunan" },
@@ -16,8 +21,13 @@ const portfolioItems = [
   { id: 4, image: portfolio4, category: "bangunan" },
   { id: 5, image: portfolio5, category: "bangunan" },
   { id: 6, image: portfolio6, category: "bangunan" },
+  { id: 13, image: portfolio7, category: "bangunan" },
   { id: 7, image: ruangkantorAcs, category: "interior" },
   { id: 8, image: ruangtamuMrAg, category: "interior" },
+  { id: 9, image: ruangdapur1, category: "interior" },
+  { id: 10, image: tempattidur1, category: "interior" },
+  { id: 11, image: tempattidur2, category: "interior" },
+  { id: 12, image: ruangtamu1, category: "interior" },
 ];
 
 type DesignCategory = "bangunan" | "interior";
@@ -111,7 +121,11 @@ const Portfolio = ({ activeTab: externalActiveTab, onTabChange }: PortfolioProps
             {filteredItems.map((item, index) => (
               <div
                 key={item.id}
-                className="animate-scale-in group relative overflow-hidden rounded-2xl shadow-soft hover:shadow-card transition-all duration-300 cursor-pointer"
+                className={`animate-scale-in group relative overflow-hidden rounded-2xl shadow-soft hover:shadow-card transition-all duration-300 cursor-pointer ${
+                  item.image === portfolio7
+                    ? "sm:col-span-2 sm:w-[calc((100%-1.5rem)/2)] sm:justify-self-center lg:col-span-1 lg:col-start-2 lg:w-full"
+                    : ""
+                }`}
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => openLightbox(index)}
               >
