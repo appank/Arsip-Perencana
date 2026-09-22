@@ -54,7 +54,7 @@ const packages = [
       "Potongan (melintang & memanjang)",
     ],
     popular: false,
-    whatsappLink: "https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20PAKET%20BASIC",
+    whatsappLink: "https://wa.me/6282299929866?text=Hallo,%20Saya%20ingin%20Memilih%20PAKET%20BASIC",
   },
   {
     name: "PAKET PREMIUM",
@@ -79,7 +79,7 @@ const packages = [
 
     ],
     popular: true,
-    whatsappLink: "https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20PAKET%20STANDAR",
+    whatsappLink: "https://wa.me/6282299929866?text=Hallo,%20Saya%20ingin%20Memilih%20PAKET%20STANDAR",
   },
   {
  
@@ -100,7 +100,7 @@ const packages = [
       
     ],
     popular: false,
-    whatsappLink: "https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20Memilih%20PAKET%20PREMIUM",
+    whatsappLink: "https://wa.me/6282299929866?text=Hallo,%20Saya%20ingin%20Memilih%20PAKET%20PREMIUM",
   },
 ];
 

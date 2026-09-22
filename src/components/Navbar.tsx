@@ -54,7 +54,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <a
-            href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20konsultasi%20proyek"
+            href="https://wa.me/6282299929866?text=Hallo,%20Saya%20ingin%20konsultasi%20proyek"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg font-semibold hover:bg-teal-dark transition-colors duration-200 shadow-soft"
@@ -96,7 +96,7 @@ const Navbar = () => {
               ))}
               <li className="px-4 pt-4">
                 <a
-                  href="https://wa.me/6285796030907?text=Hallo,%20Saya%20ingin%20konsultasi%20proyek"
+                  href="https://wa.me/6282299929866?text=Hallo,%20Saya%20ingin%20konsultasi%20proyek"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 text-center bg-primary text-primary-foreground px-5 py-3 rounded-lg font-semibold"
